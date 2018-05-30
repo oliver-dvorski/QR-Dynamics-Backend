@@ -17,6 +17,21 @@ window.Vue = require('vue');
 
 import App from './components/App'
 
+// Reusable stuff
+import Icon from './components/Icon'
+Vue.component('Icon', Icon)
+
+import icons from './icons'
+Vue.mixin({
+    data() {
+        return {
+            get icons() {
+                return icons
+            }
+        }
+    }
+})
+
 const app = new Vue({
     el: '#app',
     components: { App }

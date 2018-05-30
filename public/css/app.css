@@ -2667,7 +2667,7 @@ button,
 }
 
 .font-sans {
-  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: IBM Plex Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .font-serif {
@@ -4503,11 +4503,11 @@ button,
 }
 
 .text-xl {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .text-2xl {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .text-3xl {
@@ -6826,7 +6826,7 @@ button,
   }
 
   .sm\:font-sans {
-    font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: IBM Plex Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   .sm\:font-serif {
@@ -8654,11 +8654,11 @@ button,
   }
 
   .sm\:text-xl {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .sm\:text-2xl {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .sm\:text-3xl {
@@ -10963,7 +10963,7 @@ button,
   }
 
   .md\:font-sans {
-    font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: IBM Plex Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   .md\:font-serif {
@@ -12791,11 +12791,11 @@ button,
   }
 
   .md\:text-xl {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .md\:text-2xl {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .md\:text-3xl {
@@ -15100,7 +15100,7 @@ button,
   }
 
   .lg\:font-sans {
-    font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: IBM Plex Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   .lg\:font-serif {
@@ -16928,11 +16928,11 @@ button,
   }
 
   .lg\:text-xl {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .lg\:text-2xl {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .lg\:text-3xl {
@@ -19237,7 +19237,7 @@ button,
   }
 
   .xl\:font-sans {
-    font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: IBM Plex Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   .xl\:font-serif {
@@ -21065,11 +21065,11 @@ button,
   }
 
   .xl\:text-xl {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .xl\:text-2xl {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .xl\:text-3xl {
