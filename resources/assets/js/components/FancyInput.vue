@@ -8,6 +8,8 @@
             :name="name"
             @input="$emit('input', $event.target.value)"
             :disabled="disabled"
+            :min="min"
+            :max="max"
             class="fancy-input"
             >
         <textarea
@@ -24,6 +26,8 @@
     export default {
         props: {
             value: {},
+            min: { default: 0 },
+            max: { default: 100 },
             name: {
                 default: false
             },

@@ -6,15 +6,20 @@
     .fancy-input
         line-height: 1
         transition: box-shadow .3s
-        @apply .bg-white .rounded .shadow .px-4 .py-4
+        @apply .bg-white .rounded .shadow .px-4 .py-4 .max-w-full .w-full
         &:active, &:focus
             outline: none
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)
         &:disabled:hover
             cursor: not-allowed
+        &[type="color"]
+            @apply .p-1 .h-8 .w-12
 
     textarea.fancy-input
         min-height: 200px
-        min-width: 500px
+        @media (min-width: 768px)
+            min-width: 500px
         &:disabled:hover
             cursor: not-allowed
+.fancy-input-container.w-full .fancy-input
+    width: 100%

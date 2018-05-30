@@ -1,7 +1,9 @@
 <template>
-    <div class="container mx-auto">
+    <div>
         <NavBar></NavBar>
-        <router-view></router-view>
+        <div class="container mx-auto">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 

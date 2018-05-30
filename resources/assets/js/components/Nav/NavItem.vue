@@ -1,5 +1,5 @@
 <template>
-    <li>
+    <li class="whitespace-no-wrap">
         <router-link :to="'/' + name" class="no-underline text-grey-darker py-6 px-8 flex items-center" :class="isActive">
             <Icon :name="name"></Icon>
             <span class="ml-2"><slot></slot></span>
