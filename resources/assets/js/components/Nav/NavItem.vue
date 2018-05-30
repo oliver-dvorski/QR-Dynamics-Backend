@@ -12,7 +12,7 @@
         props: ['name'],
         computed: {
             isActive() {
-                return this.name == this.$route.name ? 'text-teal' : null
+                return this.name == this.$route.name ? 'text-brand' : null
             }
         }
     }

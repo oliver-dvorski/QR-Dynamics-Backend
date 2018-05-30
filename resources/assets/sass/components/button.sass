@@ -1,0 +1,8 @@
+.button, button
+    transition: box-shadow .3s, background-color .3s
+    @apply .bg-brand .text-white .rounded .shadow .px-4 .py-2 .uppercase .font-bold .tracking-superwide
+    &:active, &:focus
+        outline: none
+        @apply .shadow-lg
+    &:hover
+        @apply .bg-brand-dark

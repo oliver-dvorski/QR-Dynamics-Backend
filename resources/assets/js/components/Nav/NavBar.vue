@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-white rounded mt-8 shadow-md font-medium">
-            <ul class="list-reset flex justify-center text-xl overflow-y">
+            <ul class="list-reset flex justify-around text-xl overflow-y">
                 <NavItem name="web">Web</NavItem>
                 <NavItem name="text">Text</NavItem>
                 <NavItem name="location">Location</NavItem>

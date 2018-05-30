@@ -1,6 +1,12 @@
 <template>
     <div class="my-8">
-        <label class="block mb-2 text-grey-darker">Contents</label>
-        <textarea class="rounded bg-whtie shadow w-full h-64 p-4"></textarea>
+        <Tabs class="mb-8"></Tabs>
+        <div class="flex">
+            <div>
+                <FancyInput label="Link" class="mb-2"></FancyInput>
+                <button>Export</button>
+            </div>
+            <div>QR</div>
+        </div>
     </div>
 </template>

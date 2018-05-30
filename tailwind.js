@@ -95,13 +95,13 @@ let colors = {
   "teal-lighter": "#a0f0ed",
   "teal-lightest": "#e8fffe",
 
-  "blue-darkest": "#12283a",
-  "blue-darker": "#1c3d5a",
-  "blue-dark": "#2779bd",
-  blue: "#3490dc",
-  "blue-light": "#6cb2eb",
-  "blue-lighter": "#bcdefa",
-  "blue-lightest": "#eff8ff",
+  "blue-darkest": "#3097A7",
+  "blue-darker": "#37ACBF",
+  "blue-dark": "#3EC1D7",
+  blue: "#45d6ef",
+  "blue-light": "#7EE2F5",
+  "blue-lighter": "#B7EEFB",
+  "blue-lightest": "#DDF6FF",
 
   "indigo-darkest": "#191e38",
   "indigo-darker": "#2f365f",
@@ -128,25 +128,25 @@ let colors = {
   "pink-lightest": "#ffebef",
 
   get ["brand-darkest"]() {
-    return this["teal-darkest"];
+    return this["blue-darkest"];
   },
   get ["brand-darker"]() {
-    return this["teal-darker"];
+    return this["blue-darker"];
   },
   get ["brand-dark"]() {
-    return this["teal-dark"];
+    return this["blue-dark"];
   },
   get ["brand"]() {
-    return this["teal"];
+    return this["blue"];
   },
   get ["brand-light"]() {
-    return this["teal-light"];
+    return this["blue-light"];
   },
   get ["brand-lighter"]() {
-    return this["teal-lighter"];
+    return this["blue-lighter"];
   },
   get ["brand-lightest"]() {
-    return this["teal-lightest"];
+    return this["blue-lightest"];
   }
 };
 
@@ -339,7 +339,8 @@ module.exports = {
   tracking: {
     tight: "-0.05em",
     normal: "0",
-    wide: "0.05em"
+    wide: "0.05em",
+    superwide: "0.15em"
   },
 
   /*
@@ -677,7 +678,8 @@ module.exports = {
     "3": "0.75rem",
     "4": "1rem",
     "6": "1.5rem",
-    "8": "2rem"
+    "8": "2rem",
+    "16": "4rem"
   },
 
   /*
