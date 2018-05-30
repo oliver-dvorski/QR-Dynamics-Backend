@@ -13,12 +13,10 @@ Vue.mixin({
 })
 
 // Reusable components
-import Icon from './components/Icon'
-import FancyInput from './components/FancyInput'
-import Tabs from './components/Tabs'
-Vue.component('Icon', Icon)
-Vue.component('FancyInput', FancyInput)
-Vue.component('Tabs', Tabs)
+Vue.component('Icon', require('./components/Icon'))
+Vue.component('FancyInput', require('./components/FancyInput'))
+Vue.component('Tabs', require('./components/Tabs'))
+Vue.component('QR', require('./components/QR'))
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

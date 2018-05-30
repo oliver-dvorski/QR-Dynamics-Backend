@@ -1,17 +1,39 @@
 <template>
-    <div class="flex flex-col">
-        <label :for="name" class="label mb-2" v-if="label">{{ label }}</label>
-        <input type="text" :name="name" class="fancy-input bg-white rounded shadow px-4 py-2">
+    <div class="fancy-input-container" :class="disabled ? 'disabled' : null">
+        <label :for="name" class="label mb-2 mt-4" v-if="label">{{ label }}</label>
+        <input
+            :value="value"
+            :type="type"
+            v-if="type != 'textarea'"
+            :name="name"
+            @input="$emit('input', $event.target.value)"
+            :disabled="disabled"
+            class="fancy-input"
+            >
+        <textarea
+            :name="name"
+            v-if="type == 'textarea'"
+            class="fancy-input"
+            @input="$emit('input', $event.target.value)"
+            :disabled="disabled"
+            ></textarea>
     </div>
 </template>
 
 <script>
     export default {
         props: {
+            value: {},
             name: {
                 default: false
             },
             label: {
+                default: false
+            },
+            type: {
+                default: 'text'
+            },
+            disabled: {
                 default: false
             }
         }
