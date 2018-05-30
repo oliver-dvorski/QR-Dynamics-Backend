@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="bg-white rounded mt-8 shadow-lg font-medium">
+        <div class="bg-white rounded mt-8 shadow-md font-medium">
             <ul class="list-reset flex justify-center text-xl overflow-y">
-                <NavItem icon="web">Web</NavItem>
-                <NavItem icon="text">Text</NavItem>
-                <NavItem icon="location">Location</NavItem>
-                <NavItem icon="email">E-mail</NavItem>
-                <NavItem icon="wifi">Wi-Fi</NavItem>
+                <NavItem name="web">Web</NavItem>
+                <NavItem name="text">Text</NavItem>
+                <NavItem name="location">Location</NavItem>
+                <NavItem name="email">E-mail</NavItem>
+                <NavItem name="wifi">Wi-Fi</NavItem>
             </ul>
         </div>
     </div>
