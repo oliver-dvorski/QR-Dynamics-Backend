@@ -1,3 +1,21 @@
+// Import the icon system
+import Vue from 'vue'
+import icons from './icons'
+
+Vue.mixin({
+    data() {
+        return {
+            get icons() {
+                return icons
+            }
+        }
+    }
+})
+
+// Reusable components
+import Icon from './components/Icon'
+Vue.component('Icon', Icon)
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

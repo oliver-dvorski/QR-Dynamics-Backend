@@ -978,9 +978,6 @@ module.exports = __webpack_require__(40);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_App__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Icon__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Icon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icons__ = __webpack_require__(65);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1000,29 +997,39 @@ window.Vue = __webpack_require__(33);
 
 
 
-// Reusable stuff
+var app = new Vue({
+  el: '#app',
+  components: { App: __WEBPACK_IMPORTED_MODULE_0__components_App___default.a }
+});
 
-Vue.component('Icon', __WEBPACK_IMPORTED_MODULE_1__components_Icon___default.a);
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icons__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Icon__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Icon__);
+// Import the icon system
 
 
-Vue.mixin({
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
     data: function data() {
         return {
             get icons() {
-                return __WEBPACK_IMPORTED_MODULE_2__icons__["a" /* default */];
+                return __WEBPACK_IMPORTED_MODULE_1__icons__["a" /* default */];
             }
         };
     }
 });
 
-var app = new Vue({
-    el: '#app',
-    components: { App: __WEBPACK_IMPORTED_MODULE_0__components_App___default.a }
-});
+// Reusable components
 
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Icon', __WEBPACK_IMPORTED_MODULE_2__components_Icon___default.a);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -1043,9 +1050,9 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
+    window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-  console.error("CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token");
+    console.error("CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token");
 }
 
 /**
