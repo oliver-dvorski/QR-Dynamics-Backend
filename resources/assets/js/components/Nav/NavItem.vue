@@ -31,7 +31,7 @@
             }
         },
         mounted() {
-            setIconSize()
+            this.setIconSize()
             window.addEventListener('resize', this.setIconSize)
         }
     }
