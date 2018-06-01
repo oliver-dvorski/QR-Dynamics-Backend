@@ -19664,8 +19664,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass:
-            "pt-8 flex flex-col items-center justify-center flex-1 shadow bg-white"
+          staticClass: "pt-8 flex flex-col items-center justify-center flex-1"
         },
         [_c("QR", { attrs: { string: _vm.link } })],
         1

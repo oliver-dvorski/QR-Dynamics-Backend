@@ -8,7 +8,7 @@
                 <FancyInput label="Description (optional)" type="textarea" class="mb-2" disabled="true"></FancyInput>
                 <button class="my-4">Export</button>
             </div>
-            <div class="pt-8 flex flex-col items-center justify-center flex-1 shadow bg-white">
+            <div class="pt-8 flex flex-col items-center justify-center flex-1">
                 <QR :string="link"></QR>
             </div>
         </div>
