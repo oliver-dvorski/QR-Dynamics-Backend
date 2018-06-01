@@ -1,6 +1,6 @@
 <template>
     <div class="my-8">
-        <div class="flex flex-wrap">
+        <div class="flex flex-col md:flex-row">
             <div class="flex-1 md:mr-8">
                 <Segments class="mb-4"></Segments>
                 <FancyInput label="Link" class="mb-2" v-model="link" placeholder="https://oliverdvorski.com"></FancyInput>
