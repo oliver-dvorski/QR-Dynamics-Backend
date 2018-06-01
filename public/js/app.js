@@ -19885,12 +19885,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "my-8" }, [
-    _c("div", { staticClass: "flex" }, [
+    _c("div", { staticClass: "flex flex-col md:flex-row" }, [
       _c(
         "div",
-        { staticClass: "md:mr-8" },
+        { staticClass: "md:mr-8 w-full lg:w-auto" },
         [
           _c("FancyInput", {
+            staticClass: "w-full",
             attrs: { label: "Text", type: "textarea", placeholder: _vm.poem },
             model: {
               value: _vm.text,

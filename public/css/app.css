@@ -719,6 +719,12 @@ button,
 
 @media (min-width: 768px) {
   .fancy-input-container textarea.fancy-input {
+    min-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fancy-input-container textarea.fancy-input {
     min-width: 500px;
   }
 }
