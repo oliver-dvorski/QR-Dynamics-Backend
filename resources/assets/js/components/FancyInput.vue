@@ -10,6 +10,7 @@
             :disabled="disabled"
             :min="min"
             :max="max"
+            :placeholder="placeholder"
             class="fancy-input"
             >
         <textarea
@@ -18,6 +19,7 @@
             class="fancy-input"
             @input="$emit('input', $event.target.value)"
             :disabled="disabled"
+            :placeholder="placeholder"
             ></textarea>
     </div>
 </template>
@@ -28,6 +30,7 @@
             value: {},
             min: { default: 0 },
             max: { default: 100 },
+            placeholder: { default: '' },
             name: {
                 default: false
             },

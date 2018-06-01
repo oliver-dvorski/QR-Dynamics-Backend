@@ -3,7 +3,7 @@
         <Tabs class="mb-4"></Tabs>
         <div class="flex flex-wrap">
             <div class="flex-1">
-                <FancyInput label="Link" class="mb-2" v-model="link"></FancyInput>
+                <FancyInput label="Link" class="mb-2" v-model="link" placeholder="https://oliverdvorski.com"></FancyInput>
                 <FancyInput label="Name" class="mb-2" disabled="true"></FancyInput>
                 <FancyInput label="Description (optional)" type="textarea" class="mb-2" disabled="true"></FancyInput>
                 <button class="my-4">Export</button>
