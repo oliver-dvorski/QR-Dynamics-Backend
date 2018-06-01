@@ -1,7 +1,7 @@
 <template>
-    <div class="tab-switch select-none">
-        <div class="item" :class="active == 'static' ? 'active' : null" @click="static">Static</div>
-        <div class="item" :class="active == 'dynamic' ? 'active' : null" @click="dynamic">Dynamic</div>
+    <div class="segments select-none">
+        <div class="segment" :class="active == 'static' ? 'active' : null" @click="static">Static</div>
+        <div class="segment" :class="active == 'dynamic' ? 'active' : null" @click="dynamic">Dynamic</div>
     </div>
 </template>
 

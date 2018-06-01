@@ -15,7 +15,7 @@ Vue.mixin({
 // Reusable components
 Vue.component('Icon', require('./components/Icon'))
 Vue.component('FancyInput', require('./components/FancyInput'))
-Vue.component('Tabs', require('./components/Tabs'))
+Vue.component('Segments', require('./components/Segments'))
 Vue.component('QR', require('./components/QR'))
 
 /**

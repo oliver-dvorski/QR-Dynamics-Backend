@@ -743,15 +743,17 @@ button,
   }
 }
 
-.tab-switch {
+.segments {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.tab-switch .item {
+.segments .segment {
   -webkit-transition: background-color .1s, color .1s;
   transition: background-color .1s, color .1s;
+  text-align: center;
+  width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: .5rem;
@@ -769,23 +771,23 @@ button,
 }
 
 @media (min-width: 768px) {
-  .tab-switch .item {
+  .segments .segment {
     font-size: 1rem;
   }
 }
 
-.tab-switch .item:first-child {
+.segments .segment:first-child {
   border-top-left-radius: .25rem;
   border-bottom-left-radius: .25rem;
 }
 
-.tab-switch .item:last-child {
+.segments .segment:last-child {
   border-right-width: 2px;
   border-top-right-radius: .25rem;
   border-bottom-right-radius: .25rem;
 }
 
-.tab-switch .item.active {
+.segments .segment.active {
   background-color: #6574cd;
   color: #fff;
 }

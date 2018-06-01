@@ -12115,7 +12115,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
 // Reusable components
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Icon', __webpack_require__(17));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('FancyInput', __webpack_require__(20));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Tabs', __webpack_require__(23));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Segments', __webpack_require__(84));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('QR', __webpack_require__(26));
 
 /**
@@ -12711,124 +12711,9 @@ if (false) {
 }
 
 /***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(24)
-/* template */
-var __vue_template__ = __webpack_require__(25)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Tabs.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-971a3596", Component.options)
-  } else {
-    hotAPI.reload("data-v-971a3596", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            active: 'static'
-        };
-    },
-
-    methods: {
-        static: function _static() {
-            this.active = 'static';
-        },
-        dynamic: function dynamic() {
-            this.active = 'dynamic';
-        }
-    }
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tab-switch select-none" }, [
-    _c(
-      "div",
-      {
-        staticClass: "item",
-        class: _vm.active == "static" ? "active" : null,
-        on: { click: _vm.static }
-      },
-      [_vm._v("Static")]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "item",
-        class: _vm.active == "dynamic" ? "active" : null,
-        on: { click: _vm.dynamic }
-      },
-      [_vm._v("Dynamic")]
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-971a3596", module.exports)
-  }
-}
-
-/***/ }),
+/* 23 */,
+/* 24 */,
+/* 25 */,
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19754,67 +19639,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "my-8" },
-    [
-      _c("Tabs", { staticClass: "mb-4" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex flex-wrap" }, [
-        _c(
-          "div",
-          { staticClass: "flex-1 md:mr-8" },
-          [
-            _c("FancyInput", {
-              staticClass: "mb-2",
-              attrs: {
-                label: "Link",
-                placeholder: "https://oliverdvorski.com"
+  return _c("div", { staticClass: "my-8" }, [
+    _c("div", { staticClass: "flex flex-wrap" }, [
+      _c(
+        "div",
+        { staticClass: "flex-1 md:mr-8" },
+        [
+          _c("Segments", { staticClass: "mb-4" }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            staticClass: "mb-2",
+            attrs: { label: "Link", placeholder: "https://oliverdvorski.com" },
+            model: {
+              value: _vm.link,
+              callback: function($$v) {
+                _vm.link = $$v
               },
-              model: {
-                value: _vm.link,
-                callback: function($$v) {
-                  _vm.link = $$v
-                },
-                expression: "link"
-              }
-            }),
-            _vm._v(" "),
-            _c("FancyInput", {
-              staticClass: "mb-2",
-              attrs: { label: "Name", disabled: "true" }
-            }),
-            _vm._v(" "),
-            _c("FancyInput", {
-              staticClass: "mb-2",
-              attrs: {
-                label: "Description (optional)",
-                type: "textarea",
-                disabled: "true"
-              }
-            }),
-            _vm._v(" "),
-            _c("button", { staticClass: "my-4" }, [_vm._v("Export")])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "pt-4" },
-          [
-            _c("label", { staticClass: "block" }, [_vm._v("Your QR Code")]),
-            _vm._v(" "),
-            _c("QR", { attrs: { string: _vm.link } })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:flex-1" })
-      ])
-    ],
-    1
-  )
+              expression: "link"
+            }
+          }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            staticClass: "mb-2",
+            attrs: { label: "Name", disabled: "true" }
+          }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            staticClass: "mb-2",
+            attrs: {
+              label: "Description (optional)",
+              type: "textarea",
+              disabled: "true"
+            }
+          }),
+          _vm._v(" "),
+          _c("button", { staticClass: "my-4" }, [_vm._v("Export")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "pt-8" },
+        [
+          _c("label", { staticClass: "block" }, [_vm._v("Your QR Code")]),
+          _vm._v(" "),
+          _c("QR", { attrs: { string: _vm.link } })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-full md:flex-1" })
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20344,6 +20221,124 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     }
 });
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Segments.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0a6ef0d7", Component.options)
+  } else {
+    hotAPI.reload("data-v-0a6ef0d7", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            active: 'static'
+        };
+    },
+
+    methods: {
+        static: function _static() {
+            this.active = 'static';
+        },
+        dynamic: function dynamic() {
+            this.active = 'dynamic';
+        }
+    }
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "segments select-none" }, [
+    _c(
+      "div",
+      {
+        staticClass: "segment",
+        class: _vm.active == "static" ? "active" : null,
+        on: { click: _vm.static }
+      },
+      [_vm._v("Static")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "segment",
+        class: _vm.active == "dynamic" ? "active" : null,
+        on: { click: _vm.dynamic }
+      },
+      [_vm._v("Dynamic")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0a6ef0d7", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
