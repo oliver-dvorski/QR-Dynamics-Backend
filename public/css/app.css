@@ -765,6 +765,13 @@ button,
   letter-spacing: .15em;
   font-weight: 700;
   cursor: pointer;
+  font-size: .875rem;
+}
+
+@media (min-width: 768px) {
+  .tab-switch .item {
+    font-size: 1rem;
+  }
 }
 
 .tab-switch .item:first-child {
@@ -783,8 +790,23 @@ button,
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .nav-bar {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-bar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 .nav-bar .list-parent {
-  background-color: #fff;
+  background-color: #6574cd;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   font-weight: 500;
@@ -795,6 +817,10 @@ button,
       -ms-flex: 1;
           flex: 1;
   overflow: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 @media (min-width: 768px) {
@@ -803,6 +829,8 @@ button,
     margin-top: 2rem;
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+    background-color: #fff;
+    color: #22292f;
   }
 }
 
@@ -817,12 +845,6 @@ button,
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-  .nav-bar {
-    padding: 0;
-  }
-}
-
 .nav-bar .navbar-item {
   white-space: nowrap;
 }
@@ -830,6 +852,45 @@ button,
 @media (min-width: 768px) {
   .nav-bar .navbar-item {
     font-size: 1.5rem;
+  }
+}
+
+.nav-bar .navbar-item .link {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  border-bottom-width: 4px;
+  border-color: #6574cd;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .nav-bar .navbar-item .link {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-color: #fff;
+    color: #606f7b;
+  }
+}
+
+.nav-bar .navbar-item .is-active {
+  border-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .nav-bar .navbar-item .is-active {
+    color: #6574cd;
+    border-color: #6574cd;
   }
 }
 

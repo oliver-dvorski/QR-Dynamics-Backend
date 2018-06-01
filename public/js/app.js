@@ -19480,7 +19480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         isActive: function isActive() {
-            return this.name == this.$route.name ? 'text-brand' : null;
+            return this.name == this.$route.name ? 'is-active' : null;
         }
     },
     methods: {
@@ -19514,8 +19514,7 @@ var render = function() {
       _c(
         "router-link",
         {
-          staticClass:
-            "no-underline text-grey-darker py-4 px-4 md:py-6 md:px-8 flex items-center",
+          staticClass: "link",
           class: _vm.isActive,
           attrs: { to: "/" + _vm.name }
         },
@@ -19738,7 +19737,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -19765,7 +19763,7 @@ var render = function() {
       _c("div", { staticClass: "flex flex-wrap" }, [
         _c(
           "div",
-          { staticClass: "flex-1" },
+          { staticClass: "flex-1 md:mr-8" },
           [
             _c("FancyInput", {
               staticClass: "mb-2",
@@ -19800,8 +19798,6 @@ var render = function() {
           ],
           1
         ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-8 hidden lg:block" }),
         _vm._v(" "),
         _c(
           "div",

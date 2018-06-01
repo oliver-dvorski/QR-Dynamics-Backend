@@ -1,6 +1,6 @@
 <template>
     <li class="navbar-item">
-        <router-link :to="'/' + name" class="no-underline text-grey-darker py-4 px-4 md:py-6 md:px-8 flex items-center" :class="isActive">
+        <router-link :to="'/' + name" class="link" :class="isActive">
             <Icon :name="name" :size="iconSize"></Icon>
             <span class="ml-2"><slot></slot></span>
         </router-link>
@@ -17,7 +17,7 @@
         },
         computed: {
             isActive() {
-                return this.name == this.$route.name ? 'text-brand' : null
+                return this.name == this.$route.name ? 'is-active' : null
             }
         },
         methods: {

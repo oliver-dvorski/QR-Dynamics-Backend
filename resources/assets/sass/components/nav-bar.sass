@@ -1,11 +1,15 @@
 .nav-bar
+    @media (max-width: config('screens.md'))
+        max-width: 100%
+        width: 100%
+        padding: 0
+    @screen md
+        @apply .px-4
     .list-parent
-        @apply .bg-white .shadow .font-medium .flex .flex-1 .overflow-auto
+        @apply .bg-brand .shadow .font-medium .flex .flex-1 .overflow-auto .select-none
         @screen md
-            @apply .rounded .mt-8 .shadow-md
+            @apply .rounded .mt-8 .shadow-md .bg-white .text-black
         .list
             @apply .list-reset .flex .justify-around .text-base
-    @media (max-width: config('screens.md'))
-        padding: 0
 
 @import './navbar-item'
