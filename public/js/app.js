@@ -19626,7 +19626,7 @@ var render = function() {
     _c("div", { staticClass: "flex flex-col md:flex-row" }, [
       _c(
         "div",
-        { staticClass: "flex-1 md:mr-8" },
+        { staticClass: "md:mr-8 md:max-w-1/2" },
         [
           _c("Segments", { staticClass: "mb-4" }),
           _vm._v(" "),
@@ -19661,14 +19661,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "pt-8 flex flex-col items-center justify-center flex-1"
-        },
-        [_c("QR", { attrs: { string: _vm.link } })],
-        1
-      )
+      _c("div", [_c("QR", { attrs: { string: _vm.link } })], 1)
     ])
   ])
 }
