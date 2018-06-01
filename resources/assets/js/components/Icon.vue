@@ -4,10 +4,10 @@
 
 <script>
     export default {
-        props: ['name'],
+        props: ['name', 'size'],
         computed: {
             icon() {
-                return this.icons[this.name]
+                return this.icons[this.name][this.size]
             }
         }
     }
