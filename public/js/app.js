@@ -19494,6 +19494,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
+        setIconSize();
         window.addEventListener('resize', this.setIconSize);
     }
 });
