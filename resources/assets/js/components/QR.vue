@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col">
-        <canvas class="max-w-full"></canvas>
+    <div class="flex flex-col items-center">
+        <canvas></canvas>
         <button class="mt-4">Export</button>
     </div>
 </template>
@@ -42,3 +42,13 @@
         }
     }
 </script>
+
+<style lang="sass" scoped>
+    canvas
+        width: 350px
+        height: 350px
+        max-width: 100%
+    button
+        width: 350px
+        max-width: 100%
+</style>
