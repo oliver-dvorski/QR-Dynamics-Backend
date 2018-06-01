@@ -12775,17 +12775,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         string: { default: '' },
-        size: { default: 300 }
+        size: { default: 350 }
     },
     data: function data() {
         return {
@@ -15193,44 +15189,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("canvas"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "flex" },
-      [
-        _c("FancyInput", {
-          staticClass: "w-full",
-          attrs: { label: "Foreground colour", type: "color" },
-          model: {
-            value: _vm.fg,
-            callback: function($$v) {
-              _vm.fg = $$v
-            },
-            expression: "fg"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-4" }),
-        _vm._v(" "),
-        _c("FancyInput", {
-          staticClass: "w-full",
-          attrs: { label: "Background colour", type: "color" },
-          model: {
-            value: _vm.bg,
-            callback: function($$v) {
-              _vm.bg = $$v
-            },
-            expression: "bg"
-          }
-        })
-      ],
-      1
-    )
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex flex-col" }, [
+      _c("canvas"),
+      _vm._v(" "),
+      _c("button", { staticClass: "mt-4" }, [_vm._v("Export")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19620,8 +19592,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -19680,16 +19650,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "pt-8" },
-        [
-          _c("label", { staticClass: "block" }, [_vm._v("Your QR Code")]),
-          _vm._v(" "),
-          _c("QR", { attrs: { string: _vm.link } })
-        ],
+        {
+          staticClass:
+            "pt-8 flex flex-col items-center justify-center flex-1 shadow bg-white"
+        },
+        [_c("QR", { attrs: { string: _vm.link } })],
         1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full md:flex-1" })
+      )
     ])
   ])
 }

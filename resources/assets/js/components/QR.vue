@@ -1,11 +1,7 @@
 <template>
-    <div>
+    <div class="flex flex-col">
         <canvas></canvas>
-        <div class="flex">
-            <FancyInput class="w-full" label="Foreground colour" type="color" v-model="fg"></FancyInput>
-            <div class="w-4"></div>
-            <FancyInput class="w-full" label="Background colour" type="color" v-model="bg"></FancyInput>
-        </div>
+        <button class="mt-4">Export</button>
     </div>
 </template>
 
@@ -15,7 +11,7 @@
     export default {
         props: {
             string: { default: '' },
-            size: { default: 300 }
+            size: { default: 350 }
         },
         data() {
             return {
