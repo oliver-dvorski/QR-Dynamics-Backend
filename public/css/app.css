@@ -737,6 +737,12 @@ button,
   width: 100%;
 }
 
+@media (min-width: 992px) {
+  input[type="number"] {
+    min-width: 500px;
+  }
+}
+
 .tab-switch {
   display: -webkit-box;
   display: -ms-flexbox;

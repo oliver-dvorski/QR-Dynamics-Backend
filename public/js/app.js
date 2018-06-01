@@ -19930,7 +19930,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(83)
 /* template */
 var __vue_template__ = __webpack_require__(72)
 /* template functional */
@@ -19978,7 +19978,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "my-8" }, [_vm._v("\n    Location\n")])
+  return _c("div", { staticClass: "my-8" }, [
+    _c("div", { staticClass: "flex flex-col md:flex-row" }, [
+      _c(
+        "div",
+        { staticClass: "md:mr-8 w-full lg:w-auto" },
+        [
+          _c("FancyInput", {
+            staticClass: "w-full",
+            attrs: {
+              label: "Latitude",
+              type: "number",
+              min: "-90",
+              max: "90",
+              placeholder: "contact@oliverdvorski.com"
+            },
+            model: {
+              value: _vm.lat,
+              callback: function($$v) {
+                _vm.lat = $$v
+              },
+              expression: "lat"
+            }
+          }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            staticClass: "w-full",
+            attrs: {
+              label: "Longitude",
+              type: "number",
+              min: "-180",
+              max: "180",
+              placeholder: "Heads or tails?"
+            },
+            model: {
+              value: _vm.long,
+              callback: function($$v) {
+                _vm.long = $$v
+              },
+              expression: "long"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        [_c("QR", { staticClass: "mt-8", attrs: { string: _vm.emailCode } })],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20257,6 +20308,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         emailCode: function emailCode() {
             return 'MATMSG:TO:' + this.recipient + ';SUB:' + this.subject + ';BODY:' + this.body + ';;';
+        }
+    }
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            lat: '45.813228',
+            long: '15.973339'
+        };
+    },
+
+    computed: {
+        emailCode: function emailCode() {
+            return 'geo:' + this.lat + ',' + this.long + ',400';
         }
     }
 });
