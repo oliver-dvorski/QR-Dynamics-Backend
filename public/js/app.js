@@ -19997,7 +19997,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(82)
 /* template */
 var __vue_template__ = __webpack_require__(74)
 /* template functional */
@@ -20045,7 +20045,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "my-8" }, [_vm._v("\n    email\n")])
+  return _c("div", { staticClass: "my-8" }, [
+    _c("div", { staticClass: "flex flex-col md:flex-row" }, [
+      _c(
+        "div",
+        { staticClass: "md:mr-8 w-full lg:w-auto" },
+        [
+          _c("FancyInput", {
+            attrs: {
+              label: "Recipient",
+              type: "email",
+              placeholder: "contact@oliverdvorski.com"
+            },
+            model: {
+              value: _vm.recipient,
+              callback: function($$v) {
+                _vm.recipient = $$v
+              },
+              expression: "recipient"
+            }
+          }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            attrs: {
+              label: "Subject (optional)",
+              type: "text",
+              placeholder: "Heads or tails?"
+            },
+            model: {
+              value: _vm.subject,
+              callback: function($$v) {
+                _vm.subject = $$v
+              },
+              expression: "subject"
+            }
+          }),
+          _vm._v(" "),
+          _c("FancyInput", {
+            attrs: {
+              label: "Message body (optional)",
+              type: "textarea",
+              placeholder: _vm.razor
+            },
+            model: {
+              value: _vm.body,
+              callback: function($$v) {
+                _vm.body = $$v
+              },
+              expression: "body"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        [_c("QR", { staticClass: "mt-8", attrs: { string: _vm.emailCode } })],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20159,6 +20219,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             text: '',
             poem: 'In what distant deeps or skies.\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand, dare seize the fire?'
         };
+    }
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            recipient: '',
+            subject: '',
+            body: '',
+            razor: 'Occam\'s razor is the problem-solving principle that, when presented with competing hypothetical answers to a problem, one should select the answer that makes the fewest assumptions. The idea is attributed to William of Ockham (c. 1287–1347), who was an English Franciscan friar, scholastic philosopher and theologian.'
+        };
+    },
+
+    computed: {
+        emailCode: function emailCode() {
+            return 'MATMSG:TO:' + this.recipient + ';SUB:' + this.subject + ';BODY:' + this.body + ';;';
+        }
     }
 });
 
