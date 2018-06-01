@@ -15197,7 +15197,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "flex flex-col" }, [
-      _c("canvas"),
+      _c("canvas", { staticClass: "max-w-full" }),
       _vm._v(" "),
       _c("button", { staticClass: "mt-4" }, [_vm._v("Export")])
     ])
@@ -19257,6 +19257,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -19342,12 +19345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         setIconSize: function setIconSize() {
-            if (window.innerWidth < 768) {
-                this.iconSize = 16;
-                return;
-            }
-            this.iconSize = 24;
-            console.log(this.iconSize);
+            this.iconSize = 16;
         }
     },
     mounted: function mounted() {
@@ -19404,26 +19402,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mx-auto nav-bar" }, [
-    _c("div", { staticClass: "list-parent" }, [
-      _c(
-        "ul",
-        { staticClass: "list" },
-        [
-          _c("NavItem", { attrs: { name: "web" } }, [_vm._v("Web")]),
-          _vm._v(" "),
-          _c("NavItem", { attrs: { name: "text" } }, [_vm._v("Text")]),
-          _vm._v(" "),
-          _c("NavItem", { attrs: { name: "location" } }, [_vm._v("Location")]),
-          _vm._v(" "),
-          _c("NavItem", { attrs: { name: "email" } }, [_vm._v("E-mail")]),
-          _vm._v(" "),
-          _c("NavItem", { attrs: { name: "wifi" } }, [_vm._v("Wi-Fi")])
-        ],
-        1
-      )
-    ])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "bg-brand text-white shadow-md",
+      staticStyle: { "padding-top": "5rem" }
+    },
+    [
+      _c("div", { staticClass: "container mx-auto nav-bar" }, [
+        _c("h1", { staticClass: "font-medium mb-4 px-4 md:px-0" }, [
+          _vm._v("QR Dynamics")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "list-parent" }, [
+          _c(
+            "ul",
+            { staticClass: "list" },
+            [
+              _c("NavItem", { attrs: { name: "web" } }, [_vm._v("Web")]),
+              _vm._v(" "),
+              _c("NavItem", { attrs: { name: "text" } }, [_vm._v("Text")]),
+              _vm._v(" "),
+              _c("NavItem", { attrs: { name: "location" } }, [
+                _vm._v("Location")
+              ]),
+              _vm._v(" "),
+              _c("NavItem", { attrs: { name: "email" } }, [_vm._v("E-mail")]),
+              _vm._v(" "),
+              _c("NavItem", { attrs: { name: "wifi" } }, [_vm._v("Wi-Fi")])
+            ],
+            1
+          )
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

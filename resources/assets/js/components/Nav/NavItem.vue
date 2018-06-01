@@ -22,12 +22,7 @@
         },
         methods: {
             setIconSize() {
-                if (window.innerWidth < 768) {
-                    this.iconSize = 16
-                    return
-                }
-                this.iconSize = 24
-                console.log(this.iconSize)
+                this.iconSize = 16
             }
         },
         mounted() {

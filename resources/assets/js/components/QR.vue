@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <canvas></canvas>
+        <canvas class="max-w-full"></canvas>
         <button class="mt-4">Export</button>
     </div>
 </template>
