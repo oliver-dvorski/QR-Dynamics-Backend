@@ -10,7 +10,7 @@
                 <FancyInput label="Description (optional)" type="textarea" :disabled="codeType == 'Static'"></FancyInput>
             </div>
             <div>
-                <QR class="mt-4 lg:mt-0" :string="link" v-if="codeType == 'Static'"></QR>
+                <QR class="mt-8" :string="link" v-if="codeType == 'Static'"></QR>
                 <transition name="small-modal">
                     <AuthMessage v-show="codeType != 'Static'"></AuthMessage>
                 </transition>

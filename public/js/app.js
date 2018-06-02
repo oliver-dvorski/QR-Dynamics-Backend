@@ -20081,10 +20081,7 @@ var render = function() {
         "div",
         [
           _vm.codeType == "Static"
-            ? _c("QR", {
-                staticClass: "mt-4 lg:mt-0",
-                attrs: { string: _vm.link }
-              })
+            ? _c("QR", { staticClass: "mt-8", attrs: { string: _vm.link } })
             : _vm._e(),
           _vm._v(" "),
           _c(
