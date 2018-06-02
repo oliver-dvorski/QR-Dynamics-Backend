@@ -1,0 +1,14 @@
+.fancy-checkbox
+    svg
+        transition: color .1s
+    #tick
+        stroke-dasharray: 10.465, 10.465
+        stroke-dashoffset: 0
+        transition: stroke-dasharray .1s, stroke-dashoffset .1s
+    .unchecked #tick
+        stroke-dasharray: 10.465, 10.465
+        stroke-dashoffset: 10.465
+    .unchecked
+        @apply .text-grey-dark
+    .checked
+        @apply .text-brand
