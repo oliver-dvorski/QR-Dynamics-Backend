@@ -13478,7 +13478,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             exportPreview: {},
             fg: '#000000',
             bg: '#f8fafc',
-            padding: 0,
+            padding: 10,
             showModal: false,
             size: 350,
             dataURL: ''
@@ -13528,6 +13528,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             foreground: this.fg,
             background: this.bg
         });
+
+        this.dataURL = this.exportPreview.toDataURL();
     }
 });
 

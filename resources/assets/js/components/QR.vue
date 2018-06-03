@@ -35,7 +35,7 @@
                 exportPreview: {},
                 fg: '#000000',
                 bg: '#f8fafc',
-                padding: 0,
+                padding: 10,
                 showModal: false,
                 size: 350,
                 dataURL: ''
@@ -84,6 +84,8 @@
                 foreground: this.fg,
                 background: this.bg,
             })
+
+            this.dataURL = this.exportPreview.toDataURL()
         }
     }
 </script>
