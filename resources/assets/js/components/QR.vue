@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center">
         <canvas></canvas>
-        <button class="mt-4">Export</button>
+        <button class="raised mt-4">Export</button>
     </div>
 </template>
 

@@ -26,7 +26,8 @@
         data() {
             return {
                 link: '',
-                codeType: 'Static'
+                codeType: 'Static',
+                showModal: true
             }
         },
         components: { AuthMessage }

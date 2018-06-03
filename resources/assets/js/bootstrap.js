@@ -18,6 +18,7 @@ Vue.component('FancyInput', require('./components/FancyInput'))
 Vue.component('FancyCheckbox', require('./components/FancyCheckbox'))
 Vue.component('Segments', require('./components/Segments'))
 Vue.component('QR', require('./components/QR'))
+Vue.component('Modal', require('./components/Modal'))
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
