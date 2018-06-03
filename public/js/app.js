@@ -13395,7 +13395,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\ncanvas[data-v-6a08c1f8] {\n  width: 350px;\n  height: 350px;\n  max-width: 100%;\n}\nbutton[data-v-6a08c1f8] {\n  width: 350px;\n  max-width: 100%;\n}\n", ""]);
+exports.push([module.i, "\ncanvas[data-v-6a08c1f8] {\n  width: 350px;\n  max-width: 100%;\n}\nbutton.big[data-v-6a08c1f8] {\n  width: 350px;\n  max-width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -13448,36 +13448,81 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        string: { default: '' },
-        size: { default: 350 }
+        string: { default: '' }
     },
     data: function data() {
         return {
-            qr: {},
+            mainCode: {},
+            exportPreview: {},
             fg: '#000000',
-            bg: '#f8fafc'
+            bg: '#f8fafc',
+            padding: 0,
+            showModal: false,
+            size: 350,
+            dataURL: ''
         };
     },
 
     watch: {
         string: function string() {
-            this.qr.value = this.string;
+            this.mainCode.value = this.string;
+            this.exportPreview.value = this.string;
+            this.dataURL = this.exportPreview.toDataURL();
         },
         fg: function fg() {
-            this.qr.foreground = this.fg;
+            this.mainCode.foreground = this.fg;
+            this.exportPreview.foreground = this.fg;
+            this.dataURL = this.exportPreview.toDataURL();
         },
         bg: function bg() {
-            this.qr.background = this.bg;
+            this.mainCode.background = this.bg;
+            this.exportPreview.background = this.bg;
+            this.dataURL = this.exportPreview.toDataURL();
+        },
+        padding: function padding() {
+            this.mainCode.padding = this.padding;
+            this.exportPreview.padding = this.padding;
+            this.dataURL = this.exportPreview.toDataURL();
+        },
+        size: function size() {
+            this.mainCode.size = this.size;
+            this.exportPreview.size = this.size;
+            this.dataURL = this.exportPreview.toDataURL();
         }
     },
     mounted: function mounted() {
-        this.qr = new __WEBPACK_IMPORTED_MODULE_0_qrious___default.a({
-            element: this.$el.querySelector('canvas'),
+        this.mainCode = new __WEBPACK_IMPORTED_MODULE_0_qrious___default.a({
+            element: this.$el.querySelector('canvas#main-code'),
+            value: this.string,
+            size: this.size,
+            foreground: this.fg,
+            background: this.bg
+        });
+
+        this.exportPreview = new __WEBPACK_IMPORTED_MODULE_0_qrious___default.a({
+            element: this.$el.querySelector('canvas#export-preview'),
             value: this.string,
             size: this.size,
             foreground: this.fg,
@@ -15862,20 +15907,131 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-col items-center" }, [
-      _c("canvas"),
+  return _c(
+    "div",
+    { staticClass: "flex flex-col items-center" },
+    [
+      _c("canvas", { attrs: { id: "main-code" } }),
       _vm._v(" "),
-      _c("button", { staticClass: "raised mt-4" }, [_vm._v("Export")])
-    ])
-  }
-]
+      _c(
+        "button",
+        {
+          staticClass: "raised big mt-4",
+          on: {
+            click: function($event) {
+              _vm.showModal = true
+            }
+          }
+        },
+        [_vm._v("Export")]
+      ),
+      _vm._v(" "),
+      _c(
+        "Modal",
+        {
+          attrs: { show: _vm.showModal, size: "sm" },
+          on: {
+            close: function($event) {
+              _vm.showModal = false
+            }
+          }
+        },
+        [
+          _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+            _c("canvas", { attrs: { id: "export-preview" } }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex" },
+              [
+                _c("FancyInput", {
+                  staticClass: "mr-4",
+                  attrs: { label: "Foreground", type: "color" },
+                  model: {
+                    value: _vm.fg,
+                    callback: function($$v) {
+                      _vm.fg = $$v
+                    },
+                    expression: "fg"
+                  }
+                }),
+                _vm._v(" "),
+                _c("FancyInput", {
+                  attrs: { label: "Background", type: "color" },
+                  model: {
+                    value: _vm.bg,
+                    callback: function($$v) {
+                      _vm.bg = $$v
+                    },
+                    expression: "bg"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex" },
+              [
+                _c("FancyInput", {
+                  staticClass: "w-full mr-4",
+                  attrs: { label: "Padding", type: "number" },
+                  model: {
+                    value: _vm.padding,
+                    callback: function($$v) {
+                      _vm.padding = $$v
+                    },
+                    expression: "padding"
+                  }
+                }),
+                _vm._v(" "),
+                _c("FancyInput", {
+                  staticClass: "w-full",
+                  attrs: { label: "Size", type: "number", max: "10000" },
+                  model: {
+                    value: _vm.size,
+                    callback: function($$v) {
+                      _vm.size = $$v
+                    },
+                    expression: "size"
+                  }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "flat mr-2",
+                on: {
+                  click: function($event) {
+                    _vm.showModal = false
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "button flat",
+                attrs: { href: _vm.dataURL, download: "QR Dynamics Code.png" }
+              },
+              [_vm._v("Export")]
+            )
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -15958,9 +16114,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['show']
+    props: ['show', 'size']
 });
 
 /***/ }),
@@ -15986,52 +16146,58 @@ var render = function() {
         staticClass: "modal"
       },
       [
-        _c("div", { staticClass: "modal-mask" }, [
-          _c("div", { staticClass: "modal-container" }, [
+        _c(
+          "div",
+          {
+            staticClass: "modal-mask",
+            on: {
+              click: function($event) {
+                _vm.$emit("close")
+              }
+            }
+          },
+          [
             _c(
               "div",
               {
-                staticClass: "header",
-                attrs: { slot: "header" },
-                slot: "header"
-              },
-              [_c("h2", [_vm._v("Heading")])]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "body", attrs: { slot: "body" }, slot: "body" },
-              [
-                _vm._v(
-                  "\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo sed numquam excepturi. Debitis ipsum, corporis iusto rem pariatur est, assumenda blanditiis et voluptatem vitae, cumque culpa adipisci veritatis incidunt?\n                "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "footer",
-                attrs: { slot: "footer" },
-                slot: "footer"
+                staticClass: "modal-container",
+                class: _vm.size,
+                on: {
+                  click: function($event) {
+                    $event.stopPropagation()
+                  }
+                }
               },
               [
+                _c("div", { staticClass: "header" }, [_vm._t("heading")], 2),
+                _vm._v(" "),
+                _c("div", { staticClass: "body" }, [_vm._t("body")], 2),
+                _vm._v(" "),
                 _c(
-                  "button",
-                  {
-                    staticClass: "flat",
-                    on: {
-                      click: function($event) {
-                        _vm.$emit("close")
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
+                  "div",
+                  { staticClass: "footer" },
+                  [
+                    _vm._t("footer", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "flat",
+                          on: {
+                            click: function($event) {
+                              _vm.$emit("close")
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
+                      )
+                    ])
+                  ],
+                  2
                 )
               ]
             )
-          ])
-        ])
+          ]
+        )
       ]
     )
   ])

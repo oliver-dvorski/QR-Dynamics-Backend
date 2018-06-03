@@ -1,16 +1,20 @@
 <template>
     <transition name="modal">
         <div class="modal" v-show="show">
-            <div class="modal-mask">
-                <div class="modal-container">
-                    <div slot="header" class="header">
-                        <h2>Heading</h2>
+            <div class="modal-mask" @click="$emit('close')">
+                <div class="modal-container" :class="size" @click.stop>
+                    <div class="header">
+                        <slot name="heading">
+                        </slot>
                     </div>
-                    <div slot="body" class="body">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo sed numquam excepturi. Debitis ipsum, corporis iusto rem pariatur est, assumenda blanditiis et voluptatem vitae, cumque culpa adipisci veritatis incidunt?
+                    <div class="body">
+                        <slot name="body">
+                        </slot>
                     </div>
-                    <div slot="footer" class="footer">
-                        <button class="flat" @click="$emit('close')">Close</button>
+                    <div class="footer">
+                        <slot name="footer">
+                            <button class="flat" @click="$emit('close')">Close</button>
+                        </slot>
                     </div>
                 </div>
             </div>
@@ -20,6 +24,6 @@
 
 <script>
     export default {
-        props: ['show']
+        props: ['show', 'size']
     }
 </script>
