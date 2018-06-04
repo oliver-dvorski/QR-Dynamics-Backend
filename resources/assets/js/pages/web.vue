@@ -11,25 +11,42 @@
             </div>
             <div>
                 <QR class="mt-8" :string="link" v-if="codeType == 'Static'"></QR>
-                <transition name="small-modal">
-                    <AuthMessage v-show="codeType != 'Static'"></AuthMessage>
+                <transition name="small-modal" v-if="user == null">
+                    <OAuthMessage v-show="codeType != 'Static'"></OAuthMessage>
                 </transition>
+                <QR class="mt-8" :string="dynamicLink" v-if="codeType == 'Dynamic'"></QR>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import AuthMessage from './partials/0AuthMessage'
+    import OAuthMessage from './partials/OAuthMessage'
 
     export default {
         data() {
             return {
                 link: '',
+                dynamicLink: '',
                 codeType: 'Static',
-                showModal: true
+                showModal: true,
+                user: null
             }
         },
-        components: { AuthMessage }
+        watch: {
+            codeType() {
+                if (this.codeType == 'Dynamic' && this.user != null) {
+                    axios.get(`/api/user/${this.user.email}/new-code`).then(response => {
+                        this.dynamicLink = response.data
+                    })
+                }
+            }
+        },
+        components: { OAuthMessage },
+        mounted() {
+            axios.get('/api/user').then(response => {
+                this.user = response.data
+            })
+        }
     }
 </script>

@@ -2,11 +2,16 @@
 import Vue from 'vue'
 import icons from './icons'
 
+let appUrlMeta = document.head.querySelector('meta[name="app-url"]').content;
+
 Vue.mixin({
     data() {
         return {
             get icons() {
                 return icons
+            },
+            get appUrl() {
+              return appUrlMeta
             }
         }
     }

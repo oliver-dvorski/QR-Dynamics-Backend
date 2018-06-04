@@ -14,7 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'api', 'middleware' => ['api', 'throttle:80,1']], function() {
+    Route::get('/user', function() {
+        return request()->user();
+    });
+
+    Route::get('/user/{user}/new-code', 'QRCodeController@new');
+});
+
+
+// Auth::routes();
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
 
