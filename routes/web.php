@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'api', 'middleware' => ['api', 'throttle:80,1']], function() {
     Route::get('/user', function() {
-        return request()->user();
+        if (Auth::check()) {
+            return request()->user();
+        }
+        return response('Not logged in', 200);
     });
 
     Route::get('/user/{user}/new-code', 'QRCodeController@new');
 });
-
 
 // Auth::routes();
 

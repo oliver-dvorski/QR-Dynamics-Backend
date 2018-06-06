@@ -14,6 +14,7 @@
             class="fancy-input"
             >
         <textarea
+            :value="value"
             :name="name"
             v-if="type == 'textarea'"
             class="fancy-input"
@@ -41,6 +42,10 @@
                 default: 'text'
             },
             disabled: {
+                default: false
+            },
+            trim: {
+                type: Boolean,
                 default: false
             }
         }

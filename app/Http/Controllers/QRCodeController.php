@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaravelQRCode\Facades\QRCode as QRCodeRenderer;
 
 class QRCodeController extends Controller
 {
@@ -13,6 +14,6 @@ class QRCodeController extends Controller
 
     public function new()
     {
-        return 'tets-link';
+        return QRCodeRenderer::text('Test link')->svg();
     }
 }

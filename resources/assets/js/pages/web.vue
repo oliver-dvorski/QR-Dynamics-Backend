@@ -2,19 +2,41 @@
     <div class="my-8">
         <div class="flex flex-col lg:flex-row">
             <div class="md:mr-8 md:max-w-1/2">
-                <label class="label mb-2 mt-4 block">Code type</label>
-                <Segments v-model="codeType" :segments="['Static', 'Dynamic']">
-                </Segments>
-                <FancyInput label="Link" v-model="link" placeholder="https://oliverdvorski.com"></FancyInput>
-                <FancyInput label="Name" :disabled="codeType == 'Static'"></FancyInput>
-                <FancyInput label="Description (optional)" type="textarea" :disabled="codeType == 'Static'"></FancyInput>
+                <form @submit.prevent="saveCode" method="POST">
+                    <label class="label mb-2 mt-4 block">Code type</label>
+                    <Segments
+                        v-model="codeType"
+                        :segments="['Static', 'Dynamic']"
+                    ></Segments>
+                    <FancyInput
+                        label="Link"
+                        v-model="link"
+                        :trim="true"
+                        placeholder="https://oliverdvorski.com"
+                    ></FancyInput>
+                    <FancyInput
+                        label="Name"
+                        v-model="name"
+                        :disabled="codeType == 'Static'"
+                    ></FancyInput>
+                    <FancyInput
+                        label="Description (optional)"
+                        v-model="description"
+                        type="textarea"
+                        :disabled="codeType == 'Static'"
+                        @keydown.ctrl.enter.native="saveCode"
+                    ></FancyInput>
+                    <transition name="fade">
+                        <button class="raised mt-2" v-show="codeType == 'Dynamic'">Save</button>
+                    </transition>
+                </form>
             </div>
-            <div>
+            <div :class="codeType == 'Dynamic' ? 'w-full' : null">
                 <QR class="mt-8" :string="link" v-if="codeType == 'Static'"></QR>
                 <transition name="small-modal" v-if="user == null">
                     <OAuthMessage v-show="codeType != 'Static'"></OAuthMessage>
                 </transition>
-                <QR class="mt-8" :string="dynamicLink" v-if="codeType == 'Dynamic'"></QR>
+                <dynamicCodeList v-show="codeType == 'Dynamic' && user != null"></dynamicCodeList>
             </div>
         </div>
     </div>
@@ -22,11 +44,15 @@
 
 <script>
     import OAuthMessage from './partials/OAuthMessage'
+    import dynamicCodeList from './partials/dynamicCodeList'
+    import eventBus from '../eventBus'
 
     export default {
         data() {
             return {
                 link: '',
+                name: '',
+                description: '',
                 dynamicLink: '',
                 codeType: 'Static',
                 showModal: true,
@@ -42,9 +68,24 @@
                 }
             }
         },
-        components: { OAuthMessage },
+        methods: {
+            saveCode() {
+                eventBus.$emit('dynamicCodeAdded', {
+                    link: this.link,
+                    name: this.name,
+                    description: this.description
+                })
+                this.link = ''
+                this.name = ''
+                this.description = ''
+            }
+        },
+        components: { OAuthMessage, dynamicCodeList },
         mounted() {
             axios.get('/api/user').then(response => {
+                if (response.data == 'Not logged in') {
+                    return
+                }
                 this.user = response.data
             })
         }
