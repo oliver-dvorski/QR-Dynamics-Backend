@@ -17,13 +17,13 @@
                     <FancyInput
                         label="Name"
                         v-model="name"
-                        :disabled="codeType == 'Static'"
+                        :disabled="!allowDynamic"
                     ></FancyInput>
                     <FancyInput
                         label="Description (optional)"
                         v-model="description"
                         type="textarea"
-                        :disabled="codeType == 'Static'"
+                        :disabled="!allowDynamic"
                         @keydown.ctrl.enter.native="saveCode"
                     ></FancyInput>
                     <transition name="fade">
@@ -88,6 +88,11 @@
                 }
                 this.user = response.data
             })
+        },
+        computed: {
+            allowDynamic() {
+                return this.codeType == 'Dynamic' && this.user != null
+            }
         }
     }
 </script>
