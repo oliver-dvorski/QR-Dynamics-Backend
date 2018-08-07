@@ -82,12 +82,7 @@
         },
         components: { OAuthMessage, dynamicCodeList },
         mounted() {
-            axios.get('/api/user').then(response => {
-                if (response.data == 'Not logged in') {
-                    return
-                }
-                this.user = response.data
-            })
+            this.$store.dispatch('auth/fetchUser')
         },
         computed: {
             allowDynamic() {
