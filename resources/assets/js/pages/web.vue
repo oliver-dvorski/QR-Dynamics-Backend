@@ -69,14 +69,16 @@
         },
         methods: {
             saveCode() {
-                eventBus.$emit('dynamicCodeAdded', {
-                    link: this.link,
-                    name: this.name,
-                    description: this.description
-                })
-                this.link = ''
-                this.name = ''
-                this.description = ''
+                if (this.link !== '' && this.name !== '') {
+                    eventBus.$emit('dynamicCodeAdded', {
+                        link: this.link,
+                        name: this.name,
+                        description: this.description
+                    })
+                    this.link = ''
+                    this.name = ''
+                    this.description = ''
+                }
             }
         },
         components: { OAuthMessage, dynamicCodeList },

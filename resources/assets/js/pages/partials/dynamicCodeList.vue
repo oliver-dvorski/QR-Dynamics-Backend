@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="mt-8 flex items-center justify-center" v-show="list.length == 0">
+        <!-- <div class="mt-8 flex items-center justify-center" v-show="list.length == 0">
             <h3 class="font-normal text-grey-dark">Your dynamic codes will show up here</h3>
-        </div>
+        </div> -->
         <div class="dynamic-code-list">
-            <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in reveresedList">
+            <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in dyanmicCodeList">
                 <img class="w-full h-auto" :src="appUrl + '/api/user/oliver.dvorski@gmail.com/new-code'" alt="QR Code">
                 <div class="meta">
                     <div class="flex items-center justify-between">
@@ -55,36 +55,19 @@
 
 <script>
     import eventBus from '../../eventBus'
+    import { mapGetters } from 'vuex'
 
     export default {
         prop: [],
         data() {
             return {
-                list: [
-                    {
-                        link: 'oliverdvorski.com',
-                        name: 'Personal website',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum iste quis accusamus, molestiae quasi quia. Id '
-                    },
-                    {
-                        link: 'google.com',
-                        name: 'Google\'s search page',
-                        description: 'Lorem ipsum dolor sit amet, Ducimus dolor error nemo adipisci non, veritatis delectus vel eaque accusamus exercitationem nam quasi ipsam incidunt sunt ut nisi. Maxime, dolor itaque!'
-                    },
-                    {
-                        link: 'oliverdvorski.com',
-                        name: 'Personal website'
-                    }
-                ],
                 editing: {},
                 editModal: false,
                 warningModal: false
             }
         },
         computed: {
-            reveresedList () {
-                return this.list.reverse()
-            }
+            ...mapGetters ('web', ['dyanmicCodeList'])
         },
         methods: {
             openModal(code, index) {
@@ -98,18 +81,18 @@
                 this.editing.index = index
             },
             updateCode() {
-                this.list[this.editing.index] = this.editing
+                this.$store.commit('web/updateCode', this.editing)
                 this.editModal = false
             },
             deleteCode() {
-                this.list.splice(this.editing.index, 1)
+                this.$store.commit('web/deleteCode', this.editing.index)
                 this.warningModal = false
                 this.editing = {}
             }
         },
         mounted() {
             eventBus.$on('dynamicCodeAdded', (code) => {
-                this.list.push(code)
+                this.$store.commit('web/addCode', code)
             })
         }
     }
