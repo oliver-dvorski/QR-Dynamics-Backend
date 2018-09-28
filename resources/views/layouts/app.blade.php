@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script>
+        window.debug = {{ env('APP_DEBUG') }}
+    </script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

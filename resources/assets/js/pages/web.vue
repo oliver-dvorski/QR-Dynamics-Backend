@@ -47,6 +47,8 @@
     import dynamicCodeList from './partials/dynamicCodeList'
     import eventBus from '../eventBus'
 
+    import { mapGetters } from 'vuex'
+
     export default {
         data() {
             return {
@@ -55,16 +57,13 @@
                 description: '',
                 dynamicLink: '',
                 codeType: 'Static',
-                showModal: true,
-                user: null
+                showModal: true
             }
         },
         watch: {
             codeType() {
                 if (this.codeType == 'Dynamic' && this.user != null) {
-                    axios.get(`/api/user/${this.user.email}/new-code`).then(response => {
-                        this.dynamicLink = response.data
-                    })
+                    this.$store.dispatch('web/createCodeLink', this.user)
                 }
             }
         },
@@ -86,8 +85,9 @@
         },
         computed: {
             allowDynamic() {
-                return this.codeType == 'Dynamic' && this.user != null
-            }
+                return this.codeType == 'Dynamic' && this.user != false
+            },
+            ...mapGetters ('auth', [ 'user' ])
         }
     }
 </script>

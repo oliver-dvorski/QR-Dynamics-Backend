@@ -12362,7 +12362,7 @@ module.exports = Cancel;
 /* unused harmony export install */
 /* unused harmony export mapState */
 /* unused harmony export mapMutations */
-/* unused harmony export mapGetters */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
 /* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
@@ -20745,9 +20745,31 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
+    namespaced: true,
     state: {
-        dynamicCodes: []
+        dynamicCodes: [],
+        dynamicLink: ''
+    },
+    mutations: {
+        setDynamicLink: function setDynamicLink(state, link) {
+            state.dynamicLink = link;
+        }
+    },
+    actions: {
+        createCodeLink: function createCodeLink(context, user) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/user/' + user.email + '/new-code').then(function (response) {
+                context.setDynamicLink(response.data);
+            }).catch(function (response) {
+                if (window.debug) {
+                    console.log(response);
+                }
+            });
+        }
     }
 });
 
@@ -20761,8 +20783,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    namespaced: true,
     state: {
         user: false
+    },
+    getters: {
+        user: function user(state) {
+            return state.user;
+        }
     },
     mutations: {
         SET_USER: function SET_USER(state, user) {
@@ -20778,7 +20806,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
                 if (response.data == 'Not logged in') {
                     return false;
                 }
-                _this.commit('SET_USER', response.data);
+                _this.commit('auth/SET_USER', response.data);
             });
         }
     }
@@ -21304,6 +21332,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_dynamicCodeList__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_dynamicCodeList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_dynamicCodeList__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(14);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -21348,6 +21379,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 
 
@@ -21361,19 +21394,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: '',
             dynamicLink: '',
             codeType: 'Static',
-            showModal: true,
-            user: null
+            showModal: true
         };
     },
 
     watch: {
         codeType: function codeType() {
-            var _this = this;
-
             if (this.codeType == 'Dynamic' && this.user != null) {
-                axios.get('/api/user/' + this.user.email + '/new-code').then(function (response) {
-                    _this.dynamicLink = response.data;
-                });
+                this.$store.dispatch('web/createCodeLink', this.user);
             }
         }
     },
@@ -21394,11 +21422,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$store.dispatch('auth/fetchUser');
     },
 
-    computed: {
+    computed: _extends({
         allowDynamic: function allowDynamic() {
-            return this.codeType == 'Dynamic' && this.user != null;
+            return this.codeType == 'Dynamic' && this.user != false;
         }
-    }
+    }, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])('auth', ['user']))
 });
 
 /***/ }),
@@ -21803,6 +21831,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    computed: {
+        reveresedList: function reveresedList() {
+            return this.list.reverse();
+        }
+    },
     methods: {
         openModal: function openModal(code, index) {
             this.editing = Object.assign({}, code);
@@ -21867,7 +21900,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "dynamic-code-list" },
-        _vm._l(_vm.list, function(code, index) {
+        _vm._l(_vm.reveresedList, function(code, index) {
           return _c(
             "div",
             { staticClass: "list-item bg-white rounded shadow p-4" },

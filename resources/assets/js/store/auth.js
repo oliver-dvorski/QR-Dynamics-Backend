@@ -1,8 +1,14 @@
 import axios from 'axios'
 
 export default {
+    namespaced: true,
     state: {
         user: false
+    },
+    getters: {
+        user (state) {
+            return state.user
+        }
     },
     mutations: {
         SET_USER (state, user) {
@@ -16,7 +22,7 @@ export default {
                 if (response.data == 'Not logged in') {
                     return false
                 }
-                this.commit('SET_USER', response.data)
+                this.commit('auth/SET_USER', response.data)
             })
         }
     }

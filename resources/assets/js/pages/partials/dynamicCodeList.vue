@@ -4,7 +4,7 @@
             <h3 class="font-normal text-grey-dark">Your dynamic codes will show up here</h3>
         </div>
         <div class="dynamic-code-list">
-            <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in list">
+            <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in reveresedList">
                 <img class="w-full h-auto" :src="appUrl + '/api/user/oliver.dvorski@gmail.com/new-code'" alt="QR Code">
                 <div class="meta">
                     <div class="flex items-center justify-between">
@@ -79,6 +79,11 @@
                 editing: {},
                 editModal: false,
                 warningModal: false
+            }
+        },
+        computed: {
+            reveresedList () {
+                return this.list.reverse()
             }
         },
         methods: {
