@@ -33,10 +33,10 @@
             </div>
             <div :class="codeType == 'Dynamic' ? 'w-full' : null">
                 <QR class="mt-8" :string="link" v-if="codeType == 'Static'"></QR>
-                <transition name="small-modal" v-if="user == null">
+                <transition name="small-modal" v-if="user == false">
                     <OAuthMessage v-show="codeType != 'Static'"></OAuthMessage>
                 </transition>
-                <dynamicCodeList v-show="codeType == 'Dynamic' && user != null"></dynamicCodeList>
+                <dynamicCodeList v-show="codeType == 'Dynamic' && user != false"></dynamicCodeList>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
         },
         watch: {
             codeType() {
-                if (this.codeType == 'Dynamic' && this.user != null) {
+                if (this.codeType == 'Dynamic' && this.user != false) {
                     this.$store.dispatch('web/createCodeLink', this.user)
                 }
             }
