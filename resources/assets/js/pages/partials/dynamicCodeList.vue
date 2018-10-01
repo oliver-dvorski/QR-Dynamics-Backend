@@ -1,8 +1,8 @@
 <template>
     <div>
-        <!-- <div class="mt-8 flex items-center justify-center" v-show="list.length == 0">
+        <div class="mt-8 flex items-center" v-show="dyanmicCodeList.length == 0">
             <h3 class="font-normal text-grey-dark">Your dynamic codes will show up here</h3>
-        </div> -->
+        </div>
         <div class="dynamic-code-list">
             <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in dyanmicCodeList">
                 <img class="w-full h-auto" :src="appUrl + '/api/user/oliver.dvorski@gmail.com/new-code'" alt="QR Code">
