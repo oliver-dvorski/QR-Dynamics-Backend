@@ -16,14 +16,13 @@ export default {
         }
     },
     actions: {
-        fetchUser (state) {
-            console.log('running')
-            axios.get('/api/user').then(response => {
-                if (response.data == 'Not logged in') {
-                    return false
-                }
-                this.commit('auth/SET_USER', response.data)
-            })
+        async fetchUser (state) {
+            let response = await axios.get('/api/user')
+            if (response.data == 'Not logged in') {
+                return false
+            }
+            this.commit('auth/SET_USER', response.data)
+            return response.data
         }
     }
 }

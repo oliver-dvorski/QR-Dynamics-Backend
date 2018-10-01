@@ -10,7 +10,7 @@
                     ></Segments>
                     <FancyInput
                         label="Link"
-                        v-model="link"
+                        v-model="redirect"
                         :trim="true"
                         placeholder="https://oliverdvorski.com"
                     ></FancyInput>
@@ -32,7 +32,7 @@
                 </form>
             </div>
             <div :class="codeType == 'Dynamic' ? 'w-full' : null">
-                <QR class="mt-8" :string="link" v-if="codeType == 'Static'"></QR>
+                <QR class="mt-8" :string="redirect" v-if="codeType == 'Static'"></QR>
                 <transition name="small-modal" v-if="user == false">
                     <OAuthMessage v-show="codeType != 'Static'"></OAuthMessage>
                 </transition>
@@ -52,7 +52,7 @@
     export default {
         data() {
             return {
-                link: '',
+                redirect: '',
                 name: '',
                 description: '',
                 dynamicLink: '',
@@ -60,22 +60,15 @@
                 showModal: true
             }
         },
-        watch: {
-            codeType() {
-                if (this.codeType == 'Dynamic' && this.user != false) {
-                    this.$store.dispatch('web/createCodeLink', this.user)
-                }
-            }
-        },
         methods: {
             saveCode() {
-                if (this.link !== '' && this.name !== '') {
+                if (this.redirect !== '' && this.name !== '') {
                     eventBus.$emit('dynamicCodeAdded', {
-                        link: this.link,
+                        redirect: this.redirect,
                         name: this.name,
                         description: this.description
                     })
-                    this.link = ''
+                    this.redirect = ''
                     this.name = ''
                     this.description = ''
                 }
@@ -84,6 +77,7 @@
         components: { OAuthMessage, dynamicCodeList },
         mounted() {
             this.$store.dispatch('auth/fetchUser')
+            this.$store.dispatch('web/fetchCodeList')
         },
         computed: {
             allowDynamic() {

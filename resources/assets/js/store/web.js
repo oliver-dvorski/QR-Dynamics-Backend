@@ -1,24 +1,10 @@
 import axios from 'axios'
+import Vue from 'vue'
 
 export default {
     namespaced: true,
     state: {
-        codeList: [
-            {
-                link: 'oliverdvorski.com',
-                name: 'Personal website',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum iste quis accusamus, molestiae quasi quia. Id '
-            },
-            {
-                link: 'google.com',
-                name: 'Google\'s search page',
-                description: 'Lorem ipsum dolor sit amet, Ducimus dolor error nemo adipisci non, veritatis delectus vel eaque accusamus exercitationem nam quasi ipsam incidunt sunt ut nisi. Maxime, dolor itaque!'
-            },
-            {
-                link: 'oliverdvorski.com',
-                name: 'Personal website'
-            }
-        ],
+        codeList: [],
         dynamicLink: ''
     },
     getters: {
@@ -27,6 +13,9 @@ export default {
         }
     },
     mutations: {
+        loadCodes (state, codes) {
+            state.codeList = codes
+        },
         setDynamicLink (state, link) {
             state.dynamicLink = link
         },
@@ -34,21 +23,38 @@ export default {
             state.codeList.unshift(code)
         },
         updateCode (state, code) {
-            state.codeList[code.index] = code
+            let targetIndex = state.codeList.findIndex(element => element.id === code.id)
+            Vue.set(state.codeList, targetIndex, code)
         },
-        deleteCode (state, index) {
-            state.codeList.splice(index, 1)
+        deleteCode (state, code) {
+            let targetIndex = state.codeList.findIndex(element => element.id === code.id)
+            state.codeList.splice(targetIndex, 1)
         }
     },
     actions: {
-        createCodeLink (context, user) {
-            axios.get(`/api/user/${user.email}/new-code`).then(response => {
-                context.setDynamicLink(response.data)
-            }).catch( response => {
-                if (window.debug) {
-                    console.log(response)
-                }
-            })
+        async fetchCodeList (context) {
+            let user = await context.dispatch('auth/fetchUser', {}, { root: true })
+            let route = `/api/user/${user.id}/codes`
+            let response = await axios.get(route)
+            context.commit('loadCodes', response.data.reverse())
+        },
+
+        async new (context, code) {
+            let route = `/api/user/${context.rootGetters['auth/user'].id}/new-code`
+            let response = await axios.post(route, code)
+            context.commit('addCode', response.data)
+        },
+
+        async update (context, code) {
+            let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
+            let response = await axios.patch(route, code)
+            context.commit('updateCode', response.data)
+        },
+
+        async delete (context, code) {
+            let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
+            let response = await axios.delete(route, code)
+            context.commit('deleteCode', response.data)
         }
     }
 }

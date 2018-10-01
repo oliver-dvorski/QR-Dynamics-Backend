@@ -5,7 +5,7 @@
         </div>
         <div class="dynamic-code-list">
             <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in dyanmicCodeList">
-                <img class="w-full h-auto" :src="appUrl + '/api/user/oliver.dvorski@gmail.com/new-code'" alt="QR Code">
+                <img class="w-full h-auto" :src="appUrl + '/api/user/1/temp-code'" alt="QR Code">
                 <div class="meta">
                     <div class="flex items-center justify-between">
                         <h3 class="font-medium">{{ code.name }}</h3>
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <p class="description leading-normal text-grey-darker mb-2" v-show="code.description != ''">{{ code.description }}</p>
-                    <p class="text-sm link"><a target="_blank" :href="'//' + code.link">{{ code.link }}</a></p>
+                    <p class="text-sm link"><a target="_blank" :href="'//' + code.redirect">{{ code.redirect }}</a></p>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <h2 slot="heading">Edit Dynamic QR Code</h2>
             <div slot="body">
                 <form @submit.prevent="updateCode">
-                    <FancyInput label="Link" v-model="editing.link"></FancyInput>
+                    <FancyInput label="Link" v-model="editing.redirect"></FancyInput>
                     <FancyInput label="Name" v-model="editing.name"></FancyInput>
                     <FancyInput label="Description" type="textarea" v-model="editing.description" @keydown.ctrl.enter.native="updateCode"></FancyInput>
                 </form>
@@ -81,18 +81,18 @@
                 this.editing.index = index
             },
             updateCode() {
-                this.$store.commit('web/updateCode', this.editing)
+                this.$store.dispatch('web/update', this.editing)
                 this.editModal = false
             },
             deleteCode() {
-                this.$store.commit('web/deleteCode', this.editing.index)
+                this.$store.dispatch('web/delete', this.editing)
                 this.warningModal = false
                 this.editing = {}
             }
         },
         mounted() {
             eventBus.$on('dynamicCodeAdded', (code) => {
-                this.$store.commit('web/addCode', code)
+                this.$store.dispatch('web/new', code)
             })
         }
     }
@@ -111,6 +111,7 @@
 
         .description
             flex: 1
+            white-space: pre
 
         .link
             text-align: right

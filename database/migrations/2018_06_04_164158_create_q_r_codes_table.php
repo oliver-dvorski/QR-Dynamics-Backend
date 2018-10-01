@@ -18,11 +18,10 @@ class CreateQRCodesTable extends Migration
             $table->integer('user_id');
 
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->string('link')->unique();
             $table->string('redirect');
-            $table->boolean('active');
 
             $table->timestamps();
         });
