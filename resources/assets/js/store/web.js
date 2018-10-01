@@ -19,14 +19,14 @@ export default {
         setDynamicLink (state, link) {
             state.dynamicLink = link
         },
-        addCode (state, code) {
+        new (state, code) {
             state.codeList.unshift(code)
         },
-        updateCode (state, code) {
+        update (state, code) {
             let targetIndex = state.codeList.findIndex(element => element.id === code.id)
             Vue.set(state.codeList, targetIndex, code)
         },
-        deleteCode (state, code) {
+        delete (state, code) {
             let targetIndex = state.codeList.findIndex(element => element.id === code.id)
             state.codeList.splice(targetIndex, 1)
         }
@@ -42,19 +42,19 @@ export default {
         async new (context, code) {
             let route = `/api/user/${context.rootGetters['auth/user'].id}/new-code`
             let response = await axios.post(route, code)
-            context.commit('addCode', response.data)
+            context.commit('new', response.data)
         },
 
         async update (context, code) {
             let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
             let response = await axios.patch(route, code)
-            context.commit('updateCode', response.data)
+            context.commit('update', response.data)
         },
 
         async delete (context, code) {
             let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
             let response = await axios.delete(route, code)
-            context.commit('deleteCode', response.data)
+            context.commit('delete', response.data)
         }
     }
 }
