@@ -20,6 +20,8 @@ class User extends Authenticatable
 
     protected $primaryKey = 'email';
 
+    public $incrementing = false;
+
     /**
      * The attributes that should be hidden for arrays.
      *
