@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-col items-center">
         <canvas id="main-code"></canvas>
-        <button class="raised big mt-4" @click="showModal = true">Export</button>
-        <Modal :show="showModal" @close="showModal = false" size="sm">
+        <button class="raised big mt-4" @click="showModal = true" v-if="shouldExport">Export</button>
+        <Modal :show="showModal" @close="showModal = false" size="sm" v-if="shouldExport">
             <div slot="body">
                 <canvas id="export-preview"></canvas>
                 <div class="flex">
@@ -27,7 +27,11 @@
 
     export default {
         props: {
-            string: { default: '' }
+            string: { default: '' },
+            shouldExport: {
+                type: Boolean,
+                default: true
+            }
         },
         data() {
             return {
