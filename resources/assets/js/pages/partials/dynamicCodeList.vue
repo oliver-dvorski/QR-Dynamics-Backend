@@ -3,26 +3,19 @@
         <div class="mt-8 flex items-center" v-show="dyanmicCodeList.length == 0">
             <h3 class="font-normal text-grey-dark">Your dynamic codes will show up here</h3>
         </div>
-        <div class="dynamic-code-list">
-            <div class="list-item bg-white rounded shadow p-4" v-for="(code, index) in dyanmicCodeList">
-                <img class="w-full h-auto" :src="appUrl + '/api/user/1/temp-code'" alt="QR Code">
-                <div class="meta">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-medium">{{ code.name }}</h3>
-                        <div>
-                            <button class="flat" @click="openModal(code, index)">
-                                <Icon name="cog" size="16" class="text-grey-darkest"></Icon>
-                            </button>
-                            <button class="flat" @click="openWarningModal(code, index)">
-                                <Icon name="trash" size="16" class="text-grey-darkest"></Icon>
-                            </button>
-                        </div>
-                    </div>
-                    <p class="description leading-normal text-grey-darker mb-2" v-show="code.description != ''">{{ code.description }}</p>
-                    <p class="text-sm link"><a target="_blank" :href="'//' + code.redirect">{{ code.redirect }}</a></p>
-                </div>
-            </div>
-        </div>
+        <ul class="dynamic-code-list list-reset">
+            <li class="list-item flex flex-col bg-white rounded cursor-pointer shadow hover:shadow-lg p-4"
+                v-for="(code, index) in dyanmicCodeList"
+                @click="openModal(code, index)">
+                <figure>
+                    <QR :string="code.redirect" :should-export="false"/>
+                </figure>
+                <main class="mt-4">
+                    <h3 class="font-medium truncate">{{ code.name }}</h3>
+                    <p class="text-sm mt-2 truncate text-brand"><a target="_blank" :href="code.redirect">{{ code.redirect }}</a></p>
+                </main>
+            </li>
+        </ul>
 
         <Modal :show="editModal"  @close="editModal = false">
             <h2 slot="heading">Edit Dynamic QR Code</h2>
@@ -33,7 +26,9 @@
                     <FancyInput label="Description" type="textarea" v-model="editing.description" @keydown.ctrl.enter.native="updateCode"></FancyInput>
                 </form>
             </div>
-            <div slot="footer">
+            <div slot="footer" class="flex-wrap">
+                <button class="flat danger mr-2" @click="openWarningModal">Delete</button>
+                <div class="flex-1"></div>
                 <button class="flat mr-2" @click="updateCode">Save</button>
                 <button class="flat" @click="editModal = false">Close</button>
             </div>
@@ -45,8 +40,8 @@
                 You're about to delete a dynamic QR Code. All data related to that code will be deleted. If you have shared the code with someone, that code will stop working. This action cannot be undone.
             </div>
             <div slot="footer">
-                <button class="flat" @click="deleteCode">Delete it</button>
-                <button class="flat" @click="warningModal = false">Cancel</button>
+                <button class="flat danger mr-2" @click="deleteCode">Delete it</button>
+                <button class="flat" @click="closeWarningModal">Cancel</button>
             </div>
         </Modal>
 
@@ -59,7 +54,7 @@
 
     export default {
         prop: [],
-        data() {
+        data () {
             return {
                 editing: {},
                 editModal: false,
@@ -70,27 +65,30 @@
             ...mapGetters ('web', ['dyanmicCodeList'])
         },
         methods: {
-            openModal(code, index) {
+            openModal (code, index) {
                 this.editing = Object.assign({}, code)
                 this.editing.index = index
                 this.editModal = true
             },
-            openWarningModal(code, index) {
+            openWarningModal () {
+                this.editModal = false
                 this.warningModal = true
-                this.editing = Object.assign({}, code)
-                this.editing.index = index
             },
-            updateCode() {
+            closeWarningModal () {
+                this.warningModal = false
+                this.editModal = true
+            },
+            updateCode () {
                 this.$store.dispatch('web/update', this.editing)
                 this.editModal = false
             },
-            deleteCode() {
+            deleteCode () {
                 this.$store.dispatch('web/delete', this.editing)
                 this.warningModal = false
                 this.editing = {}
             }
         },
-        mounted() {
+        mounted () {
             eventBus.$on('dynamicCodeAdded', (code) => {
                 this.$store.dispatch('web/new', code)
             })
@@ -99,21 +97,12 @@
 </script>
 
 <style lang="sass">
-    .dynamic-code-list .list-item
+    .dynamic-code-list
         display: grid
-        grid-template-columns: 100px 1fr
         grid-gap: 1rem
         margin: 2rem 0
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-        .meta
-            display: flex
-            flex-direction: column
-
-        .description
-            flex: 1
-            white-space: pre
-
-        .link
-            text-align: right
-            margin-top: .5rem
+        .list-item
+            transition: box-shadow .3s
 </style>
