@@ -21,7 +21,7 @@ class CreateQRCodesTable extends Migration
             $table->text('description')->nullable();
 
             $table->string('link')->unique();
-            $table->string('redirect');
+            $table->text('redirect');
 
             $table->timestamps();
         });
