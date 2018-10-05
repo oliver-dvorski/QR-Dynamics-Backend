@@ -23,10 +23,10 @@ Route::group(['prefix' => 'api', 'middleware' => ['api', 'throttle:80,1']], func
         return response('Not logged in', 200);
     });
 
-    Route::get('/user/{user}/codes', 'QRCodeController@index');
-    Route::post('/user/{user}/new-code', 'QRCodeController@new');
-    Route::patch('/user/{user}/codes/{code}', 'QRCodeController@update');
-    Route::delete('/user/{user}/codes/{code}', 'QRCodeController@delete');
+    Route::get('/codes', 'QRCodeController@index');
+    Route::post('/code', 'QRCodeController@new');
+    Route::patch('/codes/{code}', 'QRCodeController@update');
+    Route::delete('/codes/{code}', 'QRCodeController@delete');
 
     Route::get('/user/{user}/temp-code', 'QRCodeController@tempCode');
 });

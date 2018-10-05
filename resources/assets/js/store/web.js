@@ -34,25 +34,25 @@ export default {
     actions: {
         async fetchCodeList (context) {
             let user = await context.dispatch('auth/fetchUser', {}, { root: true })
-            let route = `/api/user/${user.id}/codes`
+            let route = `/api/codes`
             let response = await axios.get(route)
             context.commit('loadCodes', response.data.reverse())
         },
 
         async new (context, code) {
-            let route = `/api/user/${context.rootGetters['auth/user'].id}/new-code`
+            let route = `/api/codes`
             let response = await axios.post(route, code)
             context.commit('new', response.data)
         },
 
         async update (context, code) {
-            let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
+            let route = `/api/codes/${code.id}`
             let response = await axios.patch(route, code)
             context.commit('update', response.data)
         },
 
         async delete (context, code) {
-            let route = `/api/user/${context.rootGetters['auth/user'].id}/codes/${code.id}`
+            let route = `/api/codes/${code.id}`
             let response = await axios.delete(route, code)
             context.commit('delete', response.data)
         }

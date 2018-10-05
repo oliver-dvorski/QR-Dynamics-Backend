@@ -12,7 +12,7 @@
                 </figure>
                 <main class="mt-4">
                     <h3 class="font-medium truncate">{{ code.name }}</h3>
-                    <p class="text-sm mt-2 truncate text-brand"><a target="_blank" :href="code.redirect">{{ code.redirect }}</a></p>
+                    <p class="text-sm mt-2 truncate text-brand" @click.stop><a target="_blank" :href="code.redirect">{{ code.redirect }}</a></p>
                 </main>
             </li>
         </ul>
