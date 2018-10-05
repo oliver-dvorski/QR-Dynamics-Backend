@@ -26,19 +26,12 @@ class QRCodeController extends Controller
 
     public function new()
     {
-        request()->validate([
+        $codeData = request()->validate([
             'name'      => 'required',
             'redirect'  => 'required'
         ]);
-
-        $qrCode = Auth::user()->codes()->create([
-            'name'          => request()->name,
-            'description'   => request()->description,
-            'redirect'      => request()->redirect,
-            'link'          => str_random(5),
-        ]);
-
-        return $qrCode;
+        $codeData['link'] = str_random(5);
+        return Auth::user()->codes()->create($codeData);
     }
 
     public function update(QRCode $code) {

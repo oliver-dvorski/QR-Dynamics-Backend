@@ -24,7 +24,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['api', 'throttle:80,1']], func
     });
 
     Route::get('/codes', 'QRCodeController@index');
-    Route::post('/code', 'QRCodeController@new');
+    Route::post('/codes', 'QRCodeController@new');
     Route::patch('/codes/{code}', 'QRCodeController@update');
     Route::delete('/codes/{code}', 'QRCodeController@delete');
 
