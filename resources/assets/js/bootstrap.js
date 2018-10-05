@@ -3,15 +3,23 @@ import Vue from 'vue'
 import icons from './icons'
 
 let appUrlMeta = document.head.querySelector('meta[name="app-url"]').content;
+let debug = document.head.querySelector('meta[name="app-debug"]').content;
+let shortCodeLocation = document.head.querySelector('meta[name="short-code-location"]').content;
 
 Vue.mixin({
     data() {
         return {
+            get debug() {
+              return debug
+            },
             get icons() {
                 return icons
             },
             get appUrl() {
               return appUrlMeta
+            },
+            get shortCodeLocation() {
+              return shortCodeLocation
             }
         }
     }

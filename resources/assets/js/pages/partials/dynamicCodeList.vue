@@ -8,7 +8,7 @@
                 v-for="(code, index) in dyanmicCodeList"
                 @click="openModal(code, index)">
                 <figure>
-                    <QR :string="code.redirect" :should-export="false"/>
+                    <QR :string="getQrCodeLocation(code)" :should-export="false"/>
                 </figure>
                 <main class="mt-4">
                     <h3 class="font-medium truncate">{{ code.name }}</h3>
@@ -65,6 +65,9 @@
             ...mapGetters ('web', ['dyanmicCodeList'])
         },
         methods: {
+            getQrCodeLocation (code) {
+                return this.shortCodeLocation + '/' + code.link
+            },
             openModal (code, index) {
                 this.editing = Object.assign({}, code)
                 this.editing.index = index

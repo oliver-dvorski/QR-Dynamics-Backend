@@ -10,6 +10,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ env('APP_URL') }}">
+    <meta name="app-debug" content="{{ env('APP_DEBUG') }}">
+    <meta name="short-code-location" content="{{ env('SHORT_CODE_LOCATION') }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
