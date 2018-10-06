@@ -1,0 +1,45 @@
+.loader {
+    display: none;
+    &.loading {
+        display: block;
+    }
+    .bg, .spinner {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 99999;
+        width: 100vw;
+        height: 100vh;
+    }
+    .bg {
+        background: black;
+        opacity: 0.5;
+    }
+    .spinner {
+        &:before, &:after {
+            display: block;
+            content: '';
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 7rem;
+            height: 7rem;
+            border-radius: 100%;
+            border: 10px solid #fff;
+            border-top-color: config('colors.brand');
+            opacity: 1;
+            animation: spin 1s infinite;
+        }
+    }
+}
+
+@keyframes spin{
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

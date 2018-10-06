@@ -36,7 +36,7 @@ class QRCodeController extends Controller
         return $code;
     }
 
-    public function delete(QRCode $code) {
+    public function destroy(QRCode $code) {
         $this->authorize('update', $code);
         $code->delete();
         return $code;

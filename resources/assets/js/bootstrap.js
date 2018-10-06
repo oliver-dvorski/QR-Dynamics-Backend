@@ -32,6 +32,7 @@ Vue.component('FancyCheckbox', require('./components/FancyCheckbox'))
 Vue.component('Segments', require('./components/Segments'))
 Vue.component('QR', require('./components/QR'))
 Vue.component('Modal', require('./components/Modal'))
+Vue.component('Loader', require('./components/Loader'))
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

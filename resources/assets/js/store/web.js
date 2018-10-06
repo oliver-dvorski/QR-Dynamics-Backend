@@ -33,28 +33,44 @@ export default {
     },
     actions: {
         async fetchCodeList (context) {
+            context.commit('loading', true, { root: true })
+
             let user = await context.dispatch('auth/fetchUser', {}, { root: true })
             let route = `/api/codes`
             let response = await axios.get(route)
             context.commit('loadCodes', response.data.reverse())
+
+            context.commit('loading', false, { root: true })
         },
 
         async new (context, code) {
+            context.commit('loading', true, { root: true })
+
             let route = `/api/codes`
             let response = await axios.post(route, code)
             context.commit('new', response.data)
+
+            context.commit('loading', false, { root: true })
         },
 
         async update (context, code) {
+            context.commit('loading', true, { root: true })
+
             let route = `/api/codes/${code.id}`
             let response = await axios.patch(route, code)
             context.commit('update', response.data)
+
+            context.commit('loading', false, { root: true })
         },
 
         async delete (context, code) {
+            context.commit('loading', true, { root: true })
+
             let route = `/api/codes/${code.id}`
             let response = await axios.delete(route, code)
             context.commit('delete', response.data)
+
+            context.commit('loading', false, { root: true })
         }
     }
 }

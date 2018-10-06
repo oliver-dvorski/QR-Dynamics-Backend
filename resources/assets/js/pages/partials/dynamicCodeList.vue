@@ -45,6 +45,8 @@
             </div>
         </Modal>
 
+        <loader :condition="loading"></loader>
+
     </div>
 </template>
 
@@ -62,7 +64,10 @@
             }
         },
         computed: {
-            ...mapGetters ('web', ['dyanmicCodeList'])
+            ...mapGetters ({
+                dyanmicCodeList: 'web/dyanmicCodeList',
+                loading: 'loading'
+            })
         },
         methods: {
             getQrCodeLocation (code) {
