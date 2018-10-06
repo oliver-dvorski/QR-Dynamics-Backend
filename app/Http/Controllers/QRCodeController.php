@@ -41,4 +41,9 @@ class QRCodeController extends Controller
         $code->delete();
         return $code;
     }
+
+    public function redirect($link) {
+        $code = QRCode::where('link', $link)->firstOrFail();
+        return redirect($code->redirect);
+    }
 }
