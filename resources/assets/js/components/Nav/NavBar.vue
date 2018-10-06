@@ -5,10 +5,10 @@
             <div class="list-parent">
                 <ul class="list">
                     <NavItem name="web">Web</NavItem>
-                    <NavItem name="text">Text</NavItem>
+                    <NavItem name="wifi">Wi-Fi</NavItem>
                     <NavItem name="location">Location</NavItem>
                     <NavItem name="email">E-mail</NavItem>
-                    <NavItem name="wifi">Wi-Fi</NavItem>
+                    <NavItem name="text">Text</NavItem>
                 </ul>
             </div>
         </div>
