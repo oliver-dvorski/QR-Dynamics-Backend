@@ -8,20 +8,20 @@ let shortCodeLocation = document.head.querySelector('meta[name="short-code-locat
 
 Vue.mixin({
     data() {
-        return {
-            get debug() {
-              return debug
-            },
-            get icons() {
-                return icons
-            },
-            get appUrl() {
-              return appUrlMeta
-            },
-            get shortCodeLocation() {
-              return shortCodeLocation
-            }
+      return {
+        get debug() {
+          return debug
+        },
+        get icons() {
+          return icons
+        },
+        get appUrl() {
+          return appUrlMeta
+        },
+        get shortCodeLocation() {
+          return shortCodeLocation
         }
+      }
     }
 })
 

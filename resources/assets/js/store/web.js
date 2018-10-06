@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
+import { flash } from '@/utils'
 
 export default {
     namespaced: true,
@@ -21,14 +22,17 @@ export default {
         },
         new (state, code) {
             state.codeList.unshift(code)
+            flash('QR code registered')
         },
         update (state, code) {
             let targetIndex = state.codeList.findIndex(element => element.id === code.id)
             Vue.set(state.codeList, targetIndex, code)
+            flash('QR code updated')
         },
         delete (state, code) {
             let targetIndex = state.codeList.findIndex(element => element.id === code.id)
             state.codeList.splice(targetIndex, 1)
+            flash('QR code deleted')
         }
     },
     actions: {

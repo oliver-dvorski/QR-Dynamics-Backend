@@ -4,14 +4,16 @@
         <div class="container mx-auto">
             <router-view></router-view>
         </div>
+        <Notification></Notification>
     </div>
 </template>
 
 <script>
     import NavBar from './Nav/NavBar'
+    import Notification from './Notification'
 
     export default {
-        components: { NavBar }
+        components: { NavBar, Notification }
     }
 </script>
 

@@ -18,6 +18,15 @@ mix.js("resources/assets/js/app.js", "public/js")
    .options({
       processCssUrls: false,
       postCss: [ tailwindcss('./tailwind.js') ],
+   })
+   .webpackConfig({
+      resolve: {
+        extensions: ['.js', '.vue'],
+        alias: {
+          'vue$': 'vue/dist/vue.esm.js',
+          '@': __dirname + '/resources/assets/js'
+        },
+      }
    });
 
 if (mix.inProduction()) {
