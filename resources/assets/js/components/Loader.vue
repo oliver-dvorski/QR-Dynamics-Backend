@@ -15,7 +15,7 @@
         },
         methods: {
             cancel () {
-                this.$store.commit('cancelLoading')
+                this.$store.commit('loading', false)
             }
         }
     }

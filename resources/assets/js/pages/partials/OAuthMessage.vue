@@ -11,11 +11,12 @@
             <Icon class="mr-4" name="facebook" size="16"></Icon>
             Facebook*
         </button>
-        <a :href="`${appUrl}/login/github`" class="button raised my-2 flex w-64 text-center github">
+        <a :href="`${appUrl}/login/github`" class="button raised my-2 flex w-64 text-center github" @click="$store.commit('loading', true)">
             <Icon class="mr-4" name="github" size="16"></Icon>
             Github
         </a>
         <p class="leading-normal">* I'm still adding support for all of these services, at the moment Github is the only service integrated.</p>
+        <loader :condition="$store.getters['loading']"></loader>
     </div>
 </template>
 

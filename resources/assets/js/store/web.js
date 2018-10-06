@@ -32,7 +32,10 @@ export default {
         }
     },
     actions: {
-        async fetchCodeList (context) {
+        async fetchCodeList (context, loggedIn) {
+            if (loggedIn == false) {
+                return
+            }
             context.commit('loading', true, { root: true })
 
             let user = await context.dispatch('auth/fetchUser', {}, { root: true })
