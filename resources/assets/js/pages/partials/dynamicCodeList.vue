@@ -21,6 +21,7 @@
             <h2 slot="heading">Edit Dynamic QR Code</h2>
             <div slot="body">
                 <form @submit.prevent="updateCode">
+                    <input type="submit" class="hidden">
                     <FancyInput label="Link" v-model="editing.redirect"></FancyInput>
                     <FancyInput label="Name" v-model="editing.name"></FancyInput>
                     <FancyInput label="Description" type="textarea" v-model="editing.description" @keydown.ctrl.enter.native="updateCode"></FancyInput>

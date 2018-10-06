@@ -23124,6 +23124,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -23294,6 +23295,11 @@ var render = function() {
                 }
               },
               [
+                _c("input", {
+                  staticClass: "hidden",
+                  attrs: { type: "submit" }
+                }),
+                _vm._v(" "),
                 _c("FancyInput", {
                   attrs: { label: "Link" },
                   model: {
