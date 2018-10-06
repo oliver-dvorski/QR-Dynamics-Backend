@@ -19,11 +19,6 @@ class QRCodeController extends Controller
         return Auth::user()->codes;
     }
 
-    public function tempCode()
-    {
-        return QRCodeRenderer::text('Test link')->svg();
-    }
-
     public function new()
     {
         $codeData = request()->validate([

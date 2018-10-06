@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::get('/user', function() {
+    if (Auth::check()) {
+        return request()->user();
+    }
+    return response('Not logged in', 200);
+});
+
+Route::get('/codes', 'QRCodeController@index');
+Route::post('/codes', 'QRCodeController@new');
+Route::patch('/codes/{code}', 'QRCodeController@update');
+Route::delete('/codes/{code}', 'QRCodeController@delete');
