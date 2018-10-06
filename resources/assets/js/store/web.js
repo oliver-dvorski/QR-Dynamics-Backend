@@ -32,8 +32,9 @@ export default {
         }
     },
     actions: {
-        async fetchCodeList (context, loggedIn) {
-            if (loggedIn == false) {
+        async fetchCodeList (context) {
+            await context.dispatch('auth/fetchUser', {}, { root: true })
+            if (context.rootGetters['auth/user'] === false) {
                 return
             }
             context.commit('loading', true, { root: true })

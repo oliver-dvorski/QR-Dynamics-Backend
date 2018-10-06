@@ -76,8 +76,7 @@
         },
         components: { OAuthMessage, dynamicCodeList },
         mounted() {
-            this.$store.dispatch('auth/fetchUser')
-            this.$store.dispatch('web/fetchCodeList', this.user)
+            this.$store.dispatch('web/fetchCodeList')
         },
         computed: {
             allowDynamic() {
