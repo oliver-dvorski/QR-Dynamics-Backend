@@ -13,4 +13,9 @@ class QRCode extends Model
         'redirect',
         'link',
     ];
+
+    public function setRedirectAttribute($value) {
+        $url = '@(http)?(s)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
+        $this->attributes['redirect'] =  preg_replace($url, 'http$2://$4', $value);
+    }
 }
