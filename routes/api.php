@@ -20,7 +20,5 @@ Route::get('/user', function() {
     return response('Not logged in', 200);
 });
 
-Route::get('/codes', 'QRCodeController@index');
-Route::post('/codes', 'QRCodeController@new');
-Route::patch('/codes/{code}', 'QRCodeController@update');
-Route::delete('/codes/{code}', 'QRCodeController@delete');
+Route::resource('codes', 'QRCodeController');
+

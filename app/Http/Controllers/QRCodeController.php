@@ -19,7 +19,7 @@ class QRCodeController extends Controller
         return Auth::user()->codes;
     }
 
-    public function new()
+    public function create()
     {
         $codeData = request()->validate([
             'name'      => 'required',
