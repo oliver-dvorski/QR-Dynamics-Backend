@@ -1,6 +1,6 @@
 <template>
     <li class="navbar-item">
-        <router-link :to="'/' + name" class="link" :class="isActive">
+        <router-link :to="'/' + name" class="link outline-none" :class="isActive">
             <Icon :name="name" :size="iconSize"></Icon>
             <span class="ml-2"><slot></slot></span>
         </router-link>
