@@ -1,38 +1,33 @@
-// Import the icon system
 import Vue from 'vue'
 import icons from './icons'
 
-let appUrlMeta = document.head.querySelector('meta[name="app-url"]').content;
-let debug = document.head.querySelector('meta[name="app-debug"]').content;
-let shortCodeLocation = document.head.querySelector('meta[name="short-code-location"]').content;
+let appUrlMeta = document.head.querySelector('meta[name="app-url"]').content
+let debug = document.head.querySelector('meta[name="app-debug"]').content
+let shortCodeLocation = document.head.querySelector('meta[name="short-code-location"]').content
+
+window.debug = debug
 
 Vue.mixin({
-    data() {
-      return {
-        get debug() {
-          return debug
-        },
-        get icons() {
-          return icons
-        },
-        get appUrl() {
-          return appUrlMeta
-        },
-        get shortCodeLocation() {
-          return shortCodeLocation
-        }
+  data() {
+    return {
+      get debug() {
+        return debug
+      },
+      get icons() {
+        return icons
+      },
+      get appUrl() {
+        return appUrlMeta
+      },
+      get shortCodeLocation() {
+        return shortCodeLocation
       }
     }
+  }
 })
 
 // Reusable components
-Vue.component('Icon', require('./components/Icon'))
-Vue.component('FancyInput', require('./components/FancyInput'))
-Vue.component('FancyCheckbox', require('./components/FancyCheckbox'))
-Vue.component('Segments', require('./components/Segments'))
-Vue.component('QR', require('./components/QR'))
-Vue.component('Modal', require('./components/Modal'))
-Vue.component('Loader', require('./components/Loader'))
+import './components'
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -40,9 +35,10 @@ Vue.component('Loader', require('./components/Loader'))
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require("axios");
+import axios from 'axios'
+window.axios = axios
 
-window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -50,14 +46,14 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+let token = document.head.querySelector('meta[name="csrf-token"]')
 
 if (token) {
-  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
 } else {
   console.error(
-    "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
-  );
+    'CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token'
+  )
 }
 
 /**

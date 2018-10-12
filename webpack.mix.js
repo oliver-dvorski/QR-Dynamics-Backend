@@ -2,6 +2,8 @@ let mix = require("laravel-mix");
 
 let tailwindcss = require("tailwindcss");
 
+require('laravel-mix-eslint');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -19,6 +21,7 @@ mix.js("resources/assets/js/app.js", "public/js")
       processCssUrls: false,
       postCss: [ tailwindcss('./tailwind.js') ],
    })
+   .eslint({ fix: true })
    .webpackConfig({
       resolve: {
         extensions: ['.js', '.vue'],

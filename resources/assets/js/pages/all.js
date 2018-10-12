@@ -5,9 +5,9 @@ import email from './email'
 import wifi from './wifi'
 
 export default {
-    web,
-    text,
-    location,
-    email,
-    wifi
+  web,
+  text,
+  location,
+  email,
+  wifi
 }

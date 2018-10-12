@@ -1,14 +1,25 @@
 <template>
-    <div v-html="icon" class="flex items-center"></div>
+  <div
+    class="flex items-center"
+    v-html="icon"/>
 </template>
 
 <script>
-    export default {
-        props: ['name', 'size'],
-        computed: {
-            icon() {
-                return this.icons[this.name][this.size]
-            }
-        }
+export default {
+  props: {
+    name: {
+        type: String,
+        required: true
+    },
+    size: {
+        type: [ Number, String ],
+        default: 16
     }
+  },
+  computed: {
+    icon() {
+      return this.icons[this.name][this.size]
+    }
+  }
+}
 </script>

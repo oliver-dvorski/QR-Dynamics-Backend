@@ -1,29 +1,45 @@
 <template>
-    <transition name="modal">
-        <div class="modal" v-show="show">
-            <div class="modal-mask" @click="$emit('close')">
-                <div class="modal-container" :class="size" @click.stop>
-                    <div class="header">
-                        <slot name="heading">
-                        </slot>
-                    </div>
-                    <div class="body">
-                        <slot name="body">
-                        </slot>
-                    </div>
-                    <div class="footer">
-                        <slot name="footer">
-                            <button class="flat" @click="$emit('close')">Close</button>
-                        </slot>
-                    </div>
-                </div>
-            </div>
+  <transition name="modal">
+    <div
+      v-show="show"
+      class="modal">
+      <div
+        class="modal-mask"
+        @click="$emit('close')">
+        <div
+          :class="size"
+          class="modal-container"
+          @click.stop>
+          <div class="header">
+            <slot name="heading"/>
+          </div>
+          <div class="body">
+            <slot name="body"/>
+          </div>
+          <div class="footer">
+            <slot name="footer">
+              <button
+                class="flat"
+                @click="$emit('close')">Close</button>
+            </slot>
+          </div>
         </div>
-    </transition>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
-    export default {
-        props: ['show', 'size']
+export default {
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: ''
     }
+  }
+}
 </script>
