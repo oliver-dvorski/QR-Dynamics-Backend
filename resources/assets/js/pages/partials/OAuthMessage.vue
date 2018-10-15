@@ -33,7 +33,6 @@
         size="16"/>
       Github
     </a>
-    <p class="leading-normal">* I'm still adding support for all of these services, at the moment Github is the only service integrated.</p>
     <loader :condition="$store.getters['loading']"/>
   </div>
 </template>
