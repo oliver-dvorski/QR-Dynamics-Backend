@@ -3,31 +3,33 @@
     <p class="leading-normal mb-4">
       Due to technical limitations you'll need an account to create dynamic QR codes. For your convenience, QR Dyanmics supports OAuth so here's a couple of buttons:
     </p>
-    <button 
-      disabled 
-      class="raised my-2 flex w-64 text-center google">
-      <Icon 
-        class="mr-4" 
-        name="google" 
-        size="16"/>
-      Google*
-    </button>
-    <button 
-      disabled 
-      class="raised my-2 flex w-64 text-center facebook">
-      <Icon 
-        class="mr-4" 
-        name="facebook" 
-        size="16"/>
-      Facebook*
-    </button>
-    <a 
-      :href="`${appUrl}/login/github`" 
-      class="button raised my-2 flex w-64 text-center github" 
+    <a
+      :href="`${appUrl}/login/google`"
+      class="button raised my-2 flex w-64 text-center google"
       @click="$store.commit('loading', true)">
-      <Icon 
-        class="mr-4" 
-        name="github" 
+      <Icon
+        class="mr-4"
+        name="google"
+        size="16"/>
+      Google
+    </a>
+     <a
+      :href="`${appUrl}/login/facebook`"
+      class="button raised my-2 flex w-64 text-center facebook"
+      @click="$store.commit('loading', true)">
+      <Icon
+        class="mr-4"
+        name="facebook"
+        size="16"/>
+      Facebook
+    </a>
+    <a
+      :href="`${appUrl}/login/github`"
+      class="button raised my-2 flex w-64 text-center github"
+      @click="$store.commit('loading', true)">
+      <Icon
+        class="mr-4"
+        name="github"
         size="16"/>
       Github
     </a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\User;
 use Socialite;
+use Google_Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -45,9 +46,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -55,21 +56,24 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $github = Socialite::driver('github')->user();
-        $user = User::where('email', $github->email)->first();
+        $cloudUser = Socialite::driver($provider)->user();
+        $localUser = User::where('email', $cloudUser->email)->first();
 
-        if (!$user) {
-            $user = User::create([
-                'name' => $github->name,
-                'email' => $github->email,
-                'avatar' => $github->avatar,
-                'github_id' => $github->id
+        if (!$localUser) {
+            $localUser = User::create([
+                'name' => $cloudUser->name,
+                'email' => $cloudUser->email,
+                'avatar' => $cloudUser->avatar,
+                `{$provider}_id` => $cloudUser->id
             ]);
         }
 
-        Auth::login($user);
+        $localUser->{$provider . '_id'} = $cloudUser->id;
+        $localUser->save();
+
+        Auth::login($localUser);
 
         return redirect($this->redirectTo);
     }

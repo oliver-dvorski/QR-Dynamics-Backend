@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('avatar')->nullable();
             $table->string('email')->unique();
-            $table->integer('google_id')->nullable();
-            $table->integer('facebook_id')->nullable();
-            $table->integer('github_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('github_id')->nullable();
             $table->string('password')->nullable(); // If we ever even decide to use traditional authentication
             $table->rememberToken();
             $table->timestamps();
