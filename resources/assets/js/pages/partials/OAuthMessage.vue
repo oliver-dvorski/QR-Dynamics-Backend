@@ -1,7 +1,7 @@
 <template>
   <div :class="styling">
     <p class="leading-normal mb-4">
-      Due to technical limitations you'll need an account to create dynamic QR codes. For your convenience, QR Dyanmics supports OAuth so here's a couple of buttons:
+      Due to technical limitations of dynamic QR codes, you'll need an account to create one. For your convenience, QR Dyanmics supports OAuth so here's a couple of buttons:
     </p>
     <a
       :href="`${appUrl}/login/google`"
