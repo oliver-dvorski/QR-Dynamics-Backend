@@ -1,10 +1,14 @@
 version: '3'
 
+volumes:
+    vendor:
+
 services:
     app:
         build: ./
         volumes:
             - .:/var/www/html
+            - vendor:/var/www/html/vendor
         ports:
             - 8000:80
     database:

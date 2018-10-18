@@ -1,7 +1,7 @@
 #
 # PHP Dependencies
 #
-FROM composer:1.7 as vendor
+FROM composer:latest as vendor
 
 COPY database/ database/
 
@@ -15,15 +15,12 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-#
-# Application
-#
 FROM php:7.2-apache-stretch
-
-RUN docker-php-ext-install pdo pdo_mysql
 
 COPY . /var/www/html
 COPY --from=vendor /app/vendor/ /var/www/html/vendor/
+RUN ls -la /var/www/html/vendor
+
 # RUN chown -R www-data /var/www/html
 
 RUN cp /var/www/html/apache.conf /etc/apache2/sites-available/main.conf
@@ -31,3 +28,4 @@ RUN a2ensite main.conf
 RUN a2dissite 000-default.conf
 RUN a2enmod rewrite
 
+RUN ls -la /var/www/html/vendor
