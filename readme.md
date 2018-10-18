@@ -10,7 +10,7 @@ Right now the project is at a stage where all supported types of static codes ca
 This app finally works with Docker. So installation is pretty straightforward.
 
 1. Set up your .env file. You can just copy the _.env.example_ one into _.env_ (`cp .env.example .env`) and then just adjust what you need. Pay close attention to the OAuth data, you'll need to first register the app with the providers (Google, Facebook, Github).
-2. Build the app: `docker-compose build -d && docker-compose up -d` (Remove the `-d` if you want to be able to stop the containers by terminating the consolse command)
+2. Build the app: `docker-compose build && docker-compose up -d` (Remove the `-d` if you want to be able to stop the containers by terminating the consolse command)
 3. Set the application key: `docker exec -it qr-dynamics_app_1 php artisan key:generate`
 4. Run the migrations: `docker exec -it qr-dynamics_app_1 php artisan migrate`
 
