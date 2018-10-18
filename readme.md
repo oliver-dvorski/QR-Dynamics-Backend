@@ -17,3 +17,10 @@ This app finally works with Docker. So installation is pretty straightforward.
 And you're done. You can now access the app at `localhost:8000`
 
 Errrrr... the front-end can't just yet be compiled with the docker setup. Running the npm scripts locally should work just fine but I'll be adding some magic to the Dockerfile to solve this in one of the following commits.
+
+# ToDo
+[x] eslint
+[x] Docker
+[ ] Testing
+[ ] Hot module reload
+[ ] A11y optimisation
