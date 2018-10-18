@@ -19,7 +19,7 @@ mix.js("resources/assets/js/app.js", "public/js")
    .sass('resources/assets/sass/app.sass', 'public/css')
    .options({
       processCssUrls: false,
-      postCss: [ tailwindcss('./tailwind.js') ],
+      postCss: [ tailwindcss('tailwind.js') ],
    })
    .eslint({ fix: true })
    .webpackConfig({

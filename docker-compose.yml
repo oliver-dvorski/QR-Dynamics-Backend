@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    app:
+        build: ./
+        volumes:
+            - .:/var/www/html
+        ports:
+            - 8000:80
+    database:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_USER: qr_user
+            MYSQL_PASSWORD: secret
+            MYSQL_DATABASE: qr_dynamics
