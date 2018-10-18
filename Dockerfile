@@ -17,6 +17,17 @@ RUN composer install \
 
 FROM php:7.2-apache-stretch
 
+RUN apt-get update && apt-get install -y \
+        libmcrypt-dev \
+        mysql-client \
+        libpq-dev \
+        libsqlite3-dev \
+        libssl-dev \
+        zip \
+        unzip \
+        git
+RUN docker-php-ext-install pdo pdo_mysql
+
 COPY . /var/www/html
 COPY --from=vendor /app/vendor/ /var/www/html/vendor/
 
