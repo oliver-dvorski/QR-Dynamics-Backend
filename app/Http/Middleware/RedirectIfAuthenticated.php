@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/#/web');
+            return redirect(env('FRONTEND_URL') . '/web');
         }
 
         return $next($request);
