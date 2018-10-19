@@ -1,21 +1,3 @@
-#
-# PHP Dependencies
-#
-FROM composer:latest as vendor
-
-COPY database/ database/
-
-COPY composer.json composer.json
-COPY composer.lock composer.lock
-
-RUN composer install \
-    --ignore-platform-reqs \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
-    --quiet \
-    --prefer-dist
-
 FROM php:7.2-apache-stretch
 
 RUN apt-get update && apt-get install -y \
@@ -29,8 +11,16 @@ RUN apt-get update && apt-get install -y \
         git
 RUN docker-php-ext-install pdo pdo_mysql
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 COPY . /var/www/html
-COPY --from=vendor /app/vendor/ /var/www/html/vendor/
+RUN composer install \
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --quiet \
+    --prefer-dist
 
 # RUN chown -R www-data /var/www/html
 
