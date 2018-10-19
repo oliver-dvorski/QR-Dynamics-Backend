@@ -22,5 +22,5 @@ Errrrr... the front-end can't just yet be compiled with the docker setup. Runnin
 - [x] eslint
 - [x] Docker
 - [ ] Testing
-- [ ] Hot module reload
+- [ ] Hot module reload - Decouple front end
 - [ ] A11y optimisation
