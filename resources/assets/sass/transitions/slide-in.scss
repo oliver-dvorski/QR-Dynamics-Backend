@@ -1,8 +1,0 @@
-.slide-in-enter-active, .slide-in-leave-active {
-  transition: transform .3s, opacity .3s;
-}
-
-.slide-in-enter, .slide-in-leave-to {
-  opacity: 0;
-  transform: translateY(200%);
-}

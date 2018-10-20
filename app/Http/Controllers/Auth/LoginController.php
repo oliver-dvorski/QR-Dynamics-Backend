@@ -38,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = env('FRONTEND_URL') . '/web';
+        $this->redirectTo = env('FRONTEND_URL') . '/set_token';
         $this->middleware('guest')->except('logout');
     }
 
@@ -67,15 +67,16 @@ class LoginController extends Controller
                 'name' => $cloudUser->name,
                 'email' => $cloudUser->email,
                 'avatar' => $cloudUser->avatar,
-                `{$provider}_id` => $cloudUser->id
+                `{$provider}_id` => $cloudUser->id,
+                'api_token' => str_random(60)
             ]);
         }
 
         $localUser->{$provider . '_id'} = $cloudUser->id;
         $localUser->save();
 
-        Auth::login($localUser);
+        Auth::guard('web')->login($localUser);
 
-        return redirect($this->redirectTo);
+        return redirect($this->redirectTo . '/' . $localUser->api_token);
     }
 }

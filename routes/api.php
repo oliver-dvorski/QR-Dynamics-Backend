@@ -14,11 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/user', function() {
-    if (Auth::check()) {
-        return request()->user();
-    }
-    return response('Not logged in', 200);
-});
+    return request()->user();
+})->middleware('auth:api');
 
 Route::resource('codes', 'QRCodeController');
-

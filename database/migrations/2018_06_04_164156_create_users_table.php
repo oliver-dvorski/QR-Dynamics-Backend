@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('github_id')->nullable();
+            $table->string('api_token', 60)->unique();
             $table->string('password')->nullable(); // If we ever even decide to use traditional authentication
             $table->rememberToken();
             $table->timestamps();
