@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/user', function() {
-    return request()->user();
-})->middleware('auth:api');
+  return request()->user();
+})->middleware(['auth:api', 'api']);
 
 Route::resource('codes', 'QRCodeController');
