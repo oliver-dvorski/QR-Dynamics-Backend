@@ -2,15 +2,23 @@ version: '3'
 
 volumes:
     vendor:
+    node_modules:
 
 services:
-    app:
+    api:
         build: ./
         volumes:
             - .:/var/www/html
             - vendor:/var/www/html/vendor
         ports:
             - 8000:80
+    frontend:
+        build: ../QR-Dynamics-Frontend
+        volumes:
+            - ../QR-Dynamics-Frontend:/
+            - node_modules:../QR-Dynamics-Frontend/node_modules
+        ports:
+            - 8080:8080
     database:
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
