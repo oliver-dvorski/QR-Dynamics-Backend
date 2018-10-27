@@ -11,17 +11,6 @@ services:
             - vendor:/var/www/html/vendor
         ports:
             - 8000:80
-    frontend:
-        build: ../QR-Dynamics-Frontend
-        volumes:
-            - ../QR-Dynamics-Frontend:/app
-            - /app/node_modules
-        ports:
-            - 8080:8080
-        environment:
-            - CHOKIDAR_USEPOLLING=true
-        stdin_open: true
-        tty: true
     database:
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
