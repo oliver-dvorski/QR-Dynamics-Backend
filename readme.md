@@ -19,3 +19,4 @@ After all of that you should check your `.env` file. There you'll find some empt
 - [ ] Testing
 - [x] Hot module reload - Decouple front end
 - [ ] A11y optimisation
+- [ ] Switch auth to JWTs
