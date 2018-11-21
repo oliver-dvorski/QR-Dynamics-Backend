@@ -19,4 +19,4 @@ After all of that you should check your `.env` file. There you'll find some empt
 - [ ] Testing
 - [x] Hot module reload - Decouple front end
 - [ ] A11y optimisation
-- [ ] Switch auth to JWTs
+= [ ] Fix the auth situation. Don't just save the auth token in memory for the frontend but also invalidate the thing every time they do a page reload or smth like that.
